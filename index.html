@@ -8,7 +8,7 @@
   <meta property="og:title" content="CobrAI — Plataforma inteligente de cobro">
   <meta property="og:description" content="Conecta contratistas, empresas y fintech. Turnos, cuentas de cobro, scoring crediticio y libranza.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#7C8B7E">
+  <meta name="theme-color" content="#820AD1">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,9 +22,9 @@
         extend: {
           fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           colors: {
-            brand: { 50:'#F4F7F5', 100:'#E6EDE9', 200:'#CDD9D1', 300:'#A8C0AE', 400:'#82A68E', 500:'#6B8F76', 600:'#587A63', 700:'#476250', 800:'#3A4F41', 900:'#2D3D33' },
-            warm:  { 50:'#FAF8F6', 100:'#F0ECE8', 200:'#E0D8D0', 300:'#C9BBB0', 400:'#B09E90', 500:'#9A8778', 600:'#7D6C5E' },
-            blush: { 50:'#FBF6F5', 100:'#F2E8E5', 200:'#E5D1CC', 300:'#D4B4AC', 400:'#C09688', 500:'#A87B6D' },
+            brand: { 50:'#F5EAFF', 100:'#E8D0FF', 200:'#D1A3FF', 300:'#B56EF5', 400:'#9B3EE8', 500:'#820AD1', 600:'#6B1FA3', 700:'#560E87', 800:'#3D0A5C', 900:'#270638' },
+            coral: { 50:'#FFF1F0', 100:'#FFE0DD', 200:'#FFC2BC', 300:'#FF9C94', 400:'#FF6B5E', 500:'#E8564A', 600:'#C44036', 700:'#9E2E27', 800:'#6D201C' },
+            dark:  { 50:'#F7F7F8', 100:'#EBEBEE', 200:'#D1D1D8', 300:'#9696A4', 400:'#62627A', 500:'#3D3D54', 600:'#2A2A3E', 700:'#1A1A2E', 800:'#12121F', 900:'#0A0A14' },
           }
         }
       }
@@ -32,41 +32,41 @@
   </script>
   <style>
     * { box-sizing: border-box; }
-    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; background: #FAFAF8; }
-    .gradient-text { background: linear-gradient(135deg, #587A63 0%, #9A8778 50%, #C09688 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-gradient { background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(88,122,99,0.08) 0%, transparent 100%); }
-    .card-glow:hover { box-shadow: 0 0 0 1px rgba(88,122,99,0.08), 0 8px 40px rgba(88,122,99,0.08); }
+    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .gradient-text { background: linear-gradient(135deg, #820AD1 0%, #B56EF5 40%, #FF6B5E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-gradient { background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(130,10,209,0.08) 0%, transparent 100%); }
+    .card-glow:hover { box-shadow: 0 0 0 1px rgba(130,10,209,0.06), 0 8px 40px rgba(130,10,209,0.08); }
     .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
     .float-animation { animation: float 6s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-    .grid-bg { background-image: radial-gradient(circle, #E5E0DB 1px, transparent 1px); background-size: 24px 24px; }
+    .grid-bg { background-image: radial-gradient(circle, #E8E8EC 1px, transparent 1px); background-size: 24px 24px; }
     .shine { position: relative; overflow: hidden; }
     .shine::after { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%); animation: shine 3s infinite; }
     @keyframes shine { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
     .stat-counter { font-variant-numeric: tabular-nums; }
   </style>
 </head>
-<body class="text-stone-800 overflow-x-hidden">
+<body class="bg-white text-dark-700 overflow-x-hidden">
 
   <!-- Nav -->
-  <nav class="fixed top-0 inset-x-0 z-50 bg-[#FAFAF8]/80 backdrop-blur-lg border-b border-stone-200/60">
+  <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-lg border-b border-dark-100">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
+        <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <span class="text-xl font-extrabold tracking-tight text-stone-800">Cobr<span class="text-brand-600">AI</span></span>
+        <span class="text-xl font-extrabold tracking-tight text-dark-700">Cobr<span class="text-brand-500">AI</span></span>
       </div>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-400">
-        <a href="#features" class="hover:text-stone-800 transition-colors">Funcionalidades</a>
-        <a href="#actors" class="hover:text-stone-800 transition-colors">Para quien</a>
-        <a href="#scoring" class="hover:text-stone-800 transition-colors">Scoring</a>
-        <a href="#pricing" class="hover:text-stone-800 transition-colors">Planes</a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-dark-300">
+        <a href="#features" class="hover:text-dark-700 transition-colors">Funcionalidades</a>
+        <a href="#actors" class="hover:text-dark-700 transition-colors">Para quien</a>
+        <a href="#scoring" class="hover:text-dark-700 transition-colors">Scoring</a>
+        <a href="#pricing" class="hover:text-dark-700 transition-colors">Planes</a>
       </div>
       <div class="flex items-center gap-3">
-        <a href="/#/login" class="text-sm font-medium text-stone-500 hover:text-stone-800 transition-colors hidden sm:block">Iniciar sesion</a>
-        <a href="/#/login" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-600/15">
+        <a href="/#/login" class="text-sm font-medium text-dark-400 hover:text-dark-700 transition-colors hidden sm:block">Iniciar sesion</a>
+        <a href="/#/login" class="bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-500/20">
           Comenzar gratis
         </a>
       </div>
@@ -78,23 +78,23 @@
     <div class="absolute inset-0 grid-bg opacity-30"></div>
     <div class="max-w-7xl mx-auto px-6 relative">
       <div class="max-w-4xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-100 text-brand-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-8 fade-in">
-          <span class="w-2 h-2 bg-brand-400 rounded-full animate-pulse"></span>
+        <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-100 text-brand-600 text-sm font-semibold px-4 py-1.5 rounded-full mb-8 fade-in">
+          <span class="w-2 h-2 bg-coral-400 rounded-full animate-pulse"></span>
           Plataforma activa — Bogota, Colombia
         </div>
-        <h1 class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1] mb-6 fade-in text-stone-800">
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1] mb-6 fade-in text-dark-700">
           Cobra inteligente.<br>
           <span class="gradient-text">Crece sin limites.</span>
         </h1>
-        <p class="text-lg md:text-xl text-stone-400 max-w-2xl mx-auto mb-10 leading-relaxed fade-in">
+        <p class="text-lg md:text-xl text-dark-300 max-w-2xl mx-auto mb-10 leading-relaxed fade-in">
           CobrAI conecta contratistas, empresas y fintech en un ecosistema donde tus turnos se convierten en ingresos, tus ingresos en historial crediticio, y tu historial en acceso a credito real.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in">
-          <a href="/#/login" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-4 rounded-2xl text-lg transition-all hover:shadow-xl hover:shadow-brand-600/15 hover:-translate-y-0.5 shine">
+          <a href="/#/login" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white font-bold px-8 py-4 rounded-2xl text-lg transition-all hover:shadow-xl hover:shadow-brand-500/20 hover:-translate-y-0.5 shine">
             Comenzar gratis <i class="fa-solid fa-arrow-right ml-2"></i>
           </a>
-          <a href="#demo" class="w-full sm:w-auto bg-warm-100 hover:bg-warm-200 text-stone-600 font-semibold px-8 py-4 rounded-2xl text-lg transition-all">
-            <i class="fa-solid fa-play mr-2 text-brand-600"></i> Ver demo
+          <a href="#demo" class="w-full sm:w-auto bg-dark-50 hover:bg-dark-100 text-dark-500 font-semibold px-8 py-4 rounded-2xl text-lg transition-all">
+            <i class="fa-solid fa-play mr-2 text-coral-400"></i> Ver demo
           </a>
         </div>
       </div>
@@ -102,40 +102,40 @@
       <!-- Stats bar -->
       <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto fade-in">
         <div class="text-center">
-          <div class="text-3xl md:text-4xl font-black text-brand-600 stat-counter" data-target="1247">0</div>
-          <div class="text-sm text-stone-400 mt-1">Contratistas activos</div>
+          <div class="text-3xl md:text-4xl font-black text-brand-500 stat-counter" data-target="1247">0</div>
+          <div class="text-sm text-dark-300 mt-1">Contratistas activos</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl md:text-4xl font-black text-brand-600 stat-counter" data-target="86">0</div>
-          <div class="text-sm text-stone-400 mt-1">Empresas registradas</div>
+          <div class="text-3xl md:text-4xl font-black text-brand-500 stat-counter" data-target="86">0</div>
+          <div class="text-sm text-dark-300 mt-1">Empresas registradas</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl md:text-4xl font-black text-brand-600">$<span class="stat-counter" data-target="2.4">0</span>B</div>
-          <div class="text-sm text-stone-400 mt-1">Procesado en cobros</div>
+          <div class="text-3xl md:text-4xl font-black text-brand-500">$<span class="stat-counter" data-target="2.4">0</span>B</div>
+          <div class="text-sm text-dark-300 mt-1">Procesado en cobros</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl md:text-4xl font-black text-brand-600 stat-counter" data-target="720">0</div>
-          <div class="text-sm text-stone-400 mt-1">Score promedio</div>
+          <div class="text-3xl md:text-4xl font-black text-brand-500 stat-counter" data-target="720">0</div>
+          <div class="text-sm text-dark-300 mt-1">Score promedio</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Dashboard Preview -->
-  <section id="demo" class="py-16 md:py-24 bg-warm-50">
+  <section id="demo" class="py-16 md:py-24 bg-dark-50">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl shadow-stone-900/5 border border-stone-200 fade-in">
-        <div class="bg-stone-800 px-4 py-3 flex items-center gap-2">
+      <div class="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl shadow-dark-700/10 border border-dark-100 fade-in">
+        <div class="bg-dark-700 px-4 py-3 flex items-center gap-2">
           <div class="flex gap-1.5">
-            <div class="w-3 h-3 rounded-full bg-blush-300"></div>
-            <div class="w-3 h-3 rounded-full bg-warm-300"></div>
+            <div class="w-3 h-3 rounded-full bg-coral-400"></div>
             <div class="w-3 h-3 rounded-full bg-brand-300"></div>
+            <div class="w-3 h-3 rounded-full bg-brand-200"></div>
           </div>
           <div class="flex-1 text-center">
-            <span class="text-xs text-stone-400 bg-stone-700 px-3 py-1 rounded-md">app.cobrai.co</span>
+            <span class="text-xs text-dark-200 bg-dark-600 px-3 py-1 rounded-md">app.cobrai.co</span>
           </div>
         </div>
-        <div class="bg-gradient-to-br from-brand-600 via-brand-700 to-brand-800 p-8 md:p-16 text-center">
+        <div class="bg-gradient-to-br from-brand-500 via-brand-600 to-dark-700 p-8 md:p-16 text-center">
           <p class="text-brand-200 text-sm font-medium mb-4 uppercase tracking-wider">Vista previa del dashboard</p>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
             <div class="bg-white/10 backdrop-blur rounded-xl p-4 text-white">
@@ -155,7 +155,7 @@
               <div class="text-xs text-brand-200 mt-1">Compliance</div>
             </div>
           </div>
-          <p class="text-white/50 text-sm mt-8">Presiona <kbd class="bg-white/15 px-2 py-0.5 rounded text-xs font-mono">Ctrl+K</kbd> para navegar rapidamente</p>
+          <p class="text-white/40 text-sm mt-8">Presiona <kbd class="bg-white/10 px-2 py-0.5 rounded text-xs font-mono">Ctrl+K</kbd> para navegar rapidamente</p>
         </div>
       </div>
     </div>
@@ -166,127 +166,121 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 fade-in">
         <div class="text-sm font-bold text-brand-500 uppercase tracking-wider mb-3">Funcionalidades</div>
-        <h2 class="text-3xl md:text-5xl font-black tracking-tight text-stone-800">Todo lo que necesitas.<br><span class="text-stone-300">Nada que no.</span></h2>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight text-dark-700">Todo lo que necesitas.<br><span class="text-dark-200">Nada que no.</span></h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 fade-in">
-        <!-- Feature 1 -->
-        <div class="group bg-white border border-stone-200/60 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
+        <div class="group bg-white border border-dark-100 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
           <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-100 transition-colors">
             <i class="fa-solid fa-calendar-check text-brand-500 text-xl"></i>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-stone-700">Turnos inteligentes</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">Registra turnos de 12h o 24h con un tap. Calculo automatico de valores, aprobacion en lote, historial completo por mes.</p>
+          <h3 class="text-lg font-bold mb-2 text-dark-700">Turnos inteligentes</h3>
+          <p class="text-dark-300 text-sm leading-relaxed">Registra turnos de 12h o 24h con un tap. Calculo automatico de valores, aprobacion en lote, historial completo por mes.</p>
         </div>
-        <!-- Feature 2 -->
-        <div class="group bg-white border border-stone-200/60 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
-          <div class="w-12 h-12 bg-warm-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-warm-100 transition-colors">
-            <i class="fa-solid fa-file-invoice-dollar text-warm-500 text-xl"></i>
+        <div class="group bg-white border border-dark-100 rounded-2xl p-8 hover:border-coral-200 transition-all card-glow">
+          <div class="w-12 h-12 bg-coral-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-coral-100 transition-colors">
+            <i class="fa-solid fa-file-invoice-dollar text-coral-500 text-xl"></i>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-stone-700">Cuentas de cobro con PDF</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">Genera cuentas de cobro quincenales con PDF profesional. Numeracion secuencial, firma digital, envio directo a la empresa.</p>
+          <h3 class="text-lg font-bold mb-2 text-dark-700">Cuentas de cobro con PDF</h3>
+          <p class="text-dark-300 text-sm leading-relaxed">Genera cuentas de cobro quincenales con PDF profesional. Numeracion secuencial, firma digital, envio directo a la empresa.</p>
         </div>
-        <!-- Feature 3 -->
-        <div class="group bg-white border border-stone-200/60 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
-          <div class="w-12 h-12 bg-blush-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-blush-100 transition-colors">
-            <i class="fa-solid fa-shield-halved text-blush-400 text-xl"></i>
+        <div class="group bg-white border border-dark-100 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
+          <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-100 transition-colors">
+            <i class="fa-solid fa-shield-halved text-brand-400 text-xl"></i>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-stone-700">Compliance automatico</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">6 documentos requeridos con tracking automatico. Alertas de vencimiento, verificacion por la empresa, porcentaje de cumplimiento.</p>
+          <h3 class="text-lg font-bold mb-2 text-dark-700">Compliance automatico</h3>
+          <p class="text-dark-300 text-sm leading-relaxed">6 documentos requeridos con tracking automatico. Alertas de vencimiento, verificacion por la empresa, porcentaje de cumplimiento.</p>
         </div>
-        <!-- Feature 4 -->
-        <div class="group bg-white border border-stone-200/60 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
+        <div class="group bg-white border border-dark-100 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
           <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-100 transition-colors">
             <i class="fa-solid fa-brain text-brand-500 text-xl"></i>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-stone-700">Scoring crediticio AI</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">Score de 0 a 1000 calculado con IA. 6 factores ponderados: antiguedad, actividad, pagos, documentacion, diversificacion.</p>
+          <h3 class="text-lg font-bold mb-2 text-dark-700">Scoring crediticio AI</h3>
+          <p class="text-dark-300 text-sm leading-relaxed">Score de 0 a 1000 calculado con IA. 6 factores ponderados: antiguedad, actividad, pagos, documentacion, diversificacion.</p>
         </div>
-        <!-- Feature 5 -->
-        <div class="group bg-white border border-stone-200/60 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
-          <div class="w-12 h-12 bg-blush-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-blush-100 transition-colors">
-            <i class="fa-solid fa-hand-holding-dollar text-blush-500 text-xl"></i>
+        <div class="group bg-white border border-dark-100 rounded-2xl p-8 hover:border-coral-200 transition-all card-glow">
+          <div class="w-12 h-12 bg-coral-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-coral-100 transition-colors">
+            <i class="fa-solid fa-hand-holding-dollar text-coral-500 text-xl"></i>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-stone-700">Libranza digital</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">Credito por libranza 100% digital. Simulador en tiempo real, cumplimiento Ley 1527, tabla de amortizacion, descuento automatico.</p>
+          <h3 class="text-lg font-bold mb-2 text-dark-700">Libranza digital</h3>
+          <p class="text-dark-300 text-sm leading-relaxed">Credito por libranza 100% digital. Simulador en tiempo real, cumplimiento Ley 1527, tabla de amortizacion, descuento automatico.</p>
         </div>
-        <!-- Feature 6 -->
-        <div class="group bg-white border border-stone-200/60 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
-          <div class="w-12 h-12 bg-warm-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-warm-100 transition-colors">
-            <i class="fa-solid fa-robot text-warm-500 text-xl"></i>
+        <div class="group bg-white border border-dark-100 rounded-2xl p-8 hover:border-brand-200 transition-all card-glow">
+          <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-brand-100 transition-colors">
+            <i class="fa-solid fa-robot text-brand-400 text-xl"></i>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-stone-700">Asistente AI</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">Chat inteligente que conoce tus datos. Pregunta por turnos, documentos, scoring o libranza y obtiene respuestas contextuales al instante.</p>
+          <h3 class="text-lg font-bold mb-2 text-dark-700">Asistente AI</h3>
+          <p class="text-dark-300 text-sm leading-relaxed">Chat inteligente que conoce tus datos. Pregunta por turnos, documentos, scoring o libranza y obtiene respuestas contextuales al instante.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Three actors -->
-  <section id="actors" class="py-20 md:py-32 bg-warm-50">
+  <section id="actors" class="py-20 md:py-32 bg-dark-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 fade-in">
         <div class="text-sm font-bold text-brand-500 uppercase tracking-wider mb-3">Ecosistema</div>
-        <h2 class="text-3xl md:text-5xl font-black tracking-tight text-stone-800">Tres actores.<br><span class="text-stone-300">Un solo ecosistema.</span></h2>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight text-dark-700">Tres actores.<br><span class="text-dark-200">Un solo ecosistema.</span></h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 fade-in">
         <!-- Contratista -->
-        <div class="bg-white rounded-2xl p-8 border border-stone-200/60 relative overflow-hidden">
+        <div class="bg-white rounded-2xl p-8 border border-dark-100 relative overflow-hidden">
           <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-[80px] -z-0"></div>
           <div class="relative">
-            <div class="w-16 h-16 bg-gradient-to-br from-brand-400 to-brand-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-brand-600/10">
+            <div class="w-16 h-16 bg-gradient-to-br from-brand-400 to-brand-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-brand-500/15">
               <i class="fa-solid fa-hard-hat text-white text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3 text-stone-700">Contratista</h3>
-            <p class="text-stone-400 mb-6">El trabajador independiente que merece herramientas de primer nivel.</p>
+            <h3 class="text-2xl font-bold mb-3 text-dark-700">Contratista</h3>
+            <p class="text-dark-300 mb-6">El trabajador independiente que merece herramientas de primer nivel.</p>
             <ul class="space-y-3">
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-brand-500"></i> Registro de turnos con un tap</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-brand-500"></i> Cuentas de cobro con PDF</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-brand-500"></i> Wallet con historial de pagos</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-brand-500"></i> Score crediticio en tiempo real</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-brand-500"></i> Acceso a libranza digital</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-brand-500"></i> Asistente AI personalizado</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-500"></i> Registro de turnos con un tap</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-500"></i> Cuentas de cobro con PDF</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-500"></i> Wallet con historial de pagos</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-500"></i> Score crediticio en tiempo real</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-500"></i> Acceso a libranza digital</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-500"></i> Asistente AI personalizado</li>
             </ul>
           </div>
         </div>
 
         <!-- Empresa -->
-        <div class="bg-white rounded-2xl p-8 border border-stone-200/60 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-warm-50 rounded-bl-[80px] -z-0"></div>
+        <div class="bg-white rounded-2xl p-8 border border-dark-100 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-coral-50 rounded-bl-[80px] -z-0"></div>
           <div class="relative">
-            <div class="w-16 h-16 bg-gradient-to-br from-warm-400 to-warm-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-warm-500/10">
+            <div class="w-16 h-16 bg-gradient-to-br from-coral-400 to-coral-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-coral-400/15">
               <i class="fa-solid fa-building text-white text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3 text-stone-700">Empresa</h3>
-            <p class="text-stone-400 mb-6">Gestion de contratistas sin Excel, sin papel, sin dolor de cabeza.</p>
+            <h3 class="text-2xl font-bold mb-3 text-dark-700">Empresa</h3>
+            <p class="text-dark-300 mb-6">Gestion de contratistas sin Excel, sin papel, sin dolor de cabeza.</p>
             <ul class="space-y-3">
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-warm-500"></i> Dashboard con KPIs en vivo</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-warm-500"></i> Aprobacion de turnos en lote</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-warm-500"></i> Compliance documental al 100%</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-warm-500"></i> Pagos con trazabilidad</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-warm-500"></i> Invitaciones con codigo</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-warm-500"></i> Exportacion CSV</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-coral-500"></i> Dashboard con KPIs en vivo</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-coral-500"></i> Aprobacion de turnos en lote</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-coral-500"></i> Compliance documental al 100%</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-coral-500"></i> Pagos con trazabilidad</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-coral-500"></i> Invitaciones con codigo</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-coral-500"></i> Exportacion CSV</li>
             </ul>
           </div>
         </div>
 
         <!-- Fintech -->
-        <div class="bg-white rounded-2xl p-8 border border-stone-200/60 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-blush-50 rounded-bl-[80px] -z-0"></div>
+        <div class="bg-white rounded-2xl p-8 border border-dark-100 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-[80px] -z-0"></div>
           <div class="relative">
-            <div class="w-16 h-16 bg-gradient-to-br from-blush-400 to-blush-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blush-400/10">
+            <div class="w-16 h-16 bg-gradient-to-br from-brand-500 to-dark-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-dark-700/15">
               <i class="fa-solid fa-chart-line text-white text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3 text-stone-700">Fintech</h3>
-            <p class="text-stone-400 mb-6">Data real para decisiones de credito. No mas scoring a ciegas.</p>
+            <h3 class="text-2xl font-bold mb-3 text-dark-700">Fintech</h3>
+            <p class="text-dark-300 mb-6">Data real para decisiones de credito. No mas scoring a ciegas.</p>
             <ul class="space-y-3">
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-blush-400"></i> Scoring crediticio 0-1000</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-blush-400"></i> 6 factores ponderados con AI</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-blush-400"></i> Libranza Ley 1527 compliant</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-blush-400"></i> Portafolio en tiempo real</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-blush-400"></i> Tabla de amortizacion</li>
-              <li class="flex items-center gap-3 text-sm text-stone-500"><i class="fa-solid fa-check text-blush-400"></i> Evaluacion masiva batch</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-400"></i> Scoring crediticio 0-1000</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-400"></i> 6 factores ponderados con AI</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-400"></i> Libranza Ley 1527 compliant</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-400"></i> Portafolio en tiempo real</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-400"></i> Tabla de amortizacion</li>
+              <li class="flex items-center gap-3 text-sm text-dark-400"><i class="fa-solid fa-check text-brand-400"></i> Evaluacion masiva batch</li>
             </ul>
           </div>
         </div>
@@ -300,11 +294,11 @@
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div class="fade-in">
           <div class="text-sm font-bold text-brand-500 uppercase tracking-wider mb-3">Scoring Crediticio</div>
-          <h2 class="text-3xl md:text-4xl font-black tracking-tight mb-6 text-stone-800">Tu historial laboral<br>es tu historial crediticio.</h2>
-          <p class="text-stone-400 text-lg leading-relaxed mb-8">
+          <h2 class="text-3xl md:text-4xl font-black tracking-tight mb-6 text-dark-700">Tu historial laboral<br>es tu historial crediticio.</h2>
+          <p class="text-dark-300 text-lg leading-relaxed mb-8">
             En Colombia, millones de contratistas independientes no tienen acceso a credito porque no existen en el sistema financiero tradicional. CobrAI cambia eso.
           </p>
-          <p class="text-stone-400 leading-relaxed mb-8">
+          <p class="text-dark-300 leading-relaxed mb-8">
             Cada turno que registras, cada cuenta que cobras, cada documento que subes — todo construye tu perfil crediticio. Nuestro motor de scoring evalua 6 factores para generar un score de 0 a 1000 que te abre las puertas al credito formal.
           </p>
           <div class="space-y-4">
@@ -313,58 +307,58 @@
                 <i class="fa-solid fa-clock text-brand-500"></i>
               </div>
               <div>
-                <div class="font-semibold text-sm text-stone-700">Antiguedad</div>
-                <div class="text-xs text-stone-400">Meses activo en la plataforma</div>
+                <div class="font-semibold text-sm text-dark-700">Antiguedad</div>
+                <div class="text-xs text-dark-300">Meses activo en la plataforma</div>
               </div>
               <div class="ml-auto text-sm font-bold text-brand-500">150 pts</div>
             </div>
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 bg-warm-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fa-solid fa-fire text-warm-500"></i>
+              <div class="w-10 h-10 bg-coral-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-fire text-coral-400"></i>
               </div>
               <div>
-                <div class="font-semibold text-sm text-stone-700">Actividad</div>
-                <div class="text-xs text-stone-400">Turnos realizados</div>
+                <div class="font-semibold text-sm text-dark-700">Actividad</div>
+                <div class="text-xs text-dark-300">Turnos realizados</div>
               </div>
-              <div class="ml-auto text-sm font-bold text-warm-500">200 pts</div>
+              <div class="ml-auto text-sm font-bold text-coral-500">200 pts</div>
             </div>
             <div class="flex items-center gap-4">
               <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i class="fa-solid fa-thumbs-up text-brand-500"></i>
               </div>
               <div>
-                <div class="font-semibold text-sm text-stone-700">Tasa de aprobacion</div>
-                <div class="text-xs text-stone-400">% turnos aprobados</div>
+                <div class="font-semibold text-sm text-dark-700">Tasa de aprobacion</div>
+                <div class="text-xs text-dark-300">% turnos aprobados</div>
               </div>
               <div class="ml-auto text-sm font-bold text-brand-500">200 pts</div>
             </div>
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 bg-blush-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fa-solid fa-check-double text-blush-400"></i>
+              <div class="w-10 h-10 bg-coral-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-check-double text-coral-400"></i>
               </div>
               <div>
-                <div class="font-semibold text-sm text-stone-700">Pagos puntuales</div>
-                <div class="text-xs text-stone-400">Cuentas cobradas a tiempo</div>
+                <div class="font-semibold text-sm text-dark-700">Pagos puntuales</div>
+                <div class="text-xs text-dark-300">Cuentas cobradas a tiempo</div>
               </div>
-              <div class="ml-auto text-sm font-bold text-blush-400">200 pts</div>
+              <div class="ml-auto text-sm font-bold text-coral-500">200 pts</div>
             </div>
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 bg-warm-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fa-solid fa-folder-open text-warm-500"></i>
+              <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-folder-open text-brand-400"></i>
               </div>
               <div>
-                <div class="font-semibold text-sm text-stone-700">Documentacion</div>
-                <div class="text-xs text-stone-400">Docs completos y verificados</div>
+                <div class="font-semibold text-sm text-dark-700">Documentacion</div>
+                <div class="text-xs text-dark-300">Docs completos y verificados</div>
               </div>
-              <div class="ml-auto text-sm font-bold text-warm-500">150 pts</div>
+              <div class="ml-auto text-sm font-bold text-brand-500">150 pts</div>
             </div>
             <div class="flex items-center gap-4">
               <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i class="fa-solid fa-building text-brand-500"></i>
               </div>
               <div>
-                <div class="font-semibold text-sm text-stone-700">Empresas</div>
-                <div class="text-xs text-stone-400">Diversificacion de clientes</div>
+                <div class="font-semibold text-sm text-dark-700">Empresas</div>
+                <div class="text-xs text-dark-300">Diversificacion de clientes</div>
               </div>
               <div class="ml-auto text-sm font-bold text-brand-500">100 pts</div>
             </div>
@@ -373,31 +367,31 @@
 
         <!-- Score visual -->
         <div class="fade-in flex justify-center">
-          <div class="bg-gradient-to-br from-stone-800 to-stone-900 rounded-3xl p-10 text-white w-full max-w-sm float-animation shadow-2xl shadow-stone-900/20">
+          <div class="bg-gradient-to-br from-dark-700 to-dark-900 rounded-3xl p-10 text-white w-full max-w-sm float-animation shadow-2xl shadow-dark-900/30">
             <div class="text-center mb-8">
-              <div class="text-sm text-stone-400 font-medium mb-2">Tu Score CobrAI</div>
+              <div class="text-sm text-dark-300 font-medium mb-2">Tu Score CobrAI</div>
               <svg viewBox="0 0 200 200" class="w-48 h-48 mx-auto">
-                <circle cx="100" cy="100" r="85" fill="none" stroke="#3a3a3a" stroke-width="12"/>
+                <circle cx="100" cy="100" r="85" fill="none" stroke="#2A2A3E" stroke-width="12"/>
                 <circle cx="100" cy="100" r="85" fill="none" stroke="url(#scoreGrad)" stroke-width="12" stroke-linecap="round"
                   stroke-dasharray="534" stroke-dashoffset="149" transform="rotate(-90 100 100)"/>
                 <defs>
                   <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#82A68E"/>
-                    <stop offset="50%" stop-color="#B09E90"/>
-                    <stop offset="100%" stop-color="#C09688"/>
+                    <stop offset="0%" stop-color="#820AD1"/>
+                    <stop offset="50%" stop-color="#B56EF5"/>
+                    <stop offset="100%" stop-color="#FF6B5E"/>
                   </linearGradient>
                 </defs>
                 <text x="100" y="95" text-anchor="middle" fill="white" font-size="48" font-weight="900" font-family="Inter">720</text>
-                <text x="100" y="120" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="600" font-family="Inter">de 1000</text>
+                <text x="100" y="120" text-anchor="middle" fill="#9696A4" font-size="14" font-weight="600" font-family="Inter">de 1000</text>
               </svg>
             </div>
             <div class="space-y-3">
-              <div class="flex justify-between text-sm"><span class="text-stone-400">Elegible credito</span><span class="text-brand-300 font-semibold">Si</span></div>
-              <div class="flex justify-between text-sm"><span class="text-stone-400">Cupo maximo</span><span class="font-semibold">$2.500.000</span></div>
-              <div class="flex justify-between text-sm"><span class="text-stone-400">Ingreso promedio</span><span class="font-semibold">$1.075.000</span></div>
-              <div class="flex justify-between text-sm"><span class="text-stone-400">Tasa</span><span class="font-semibold">28.5% E.A.</span></div>
+              <div class="flex justify-between text-sm"><span class="text-dark-300">Elegible credito</span><span class="text-brand-300 font-semibold">Si</span></div>
+              <div class="flex justify-between text-sm"><span class="text-dark-300">Cupo maximo</span><span class="font-semibold">$2.500.000</span></div>
+              <div class="flex justify-between text-sm"><span class="text-dark-300">Ingreso promedio</span><span class="font-semibold">$1.075.000</span></div>
+              <div class="flex justify-between text-sm"><span class="text-dark-300">Tasa</span><span class="font-semibold">28.5% E.A.</span></div>
             </div>
-            <a href="/#/login" class="mt-6 block w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 rounded-xl text-center text-sm transition-colors">
+            <a href="/#/login" class="mt-6 block w-full bg-gradient-to-r from-brand-500 to-coral-400 hover:from-brand-400 hover:to-coral-300 text-white font-bold py-3 rounded-xl text-center text-sm transition-all">
               Calcula tu score
             </a>
           </div>
@@ -407,27 +401,27 @@
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="py-20 md:py-32 bg-warm-50">
+  <section id="pricing" class="py-20 md:py-32 bg-dark-50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 fade-in">
         <div class="text-sm font-bold text-brand-500 uppercase tracking-wider mb-3">Planes</div>
-        <h2 class="text-3xl md:text-5xl font-black tracking-tight text-stone-800">Simple y transparente.</h2>
-        <p class="text-stone-400 mt-4 text-lg">Sin costos ocultos. Sin sorpresas.</p>
+        <h2 class="text-3xl md:text-5xl font-black tracking-tight text-dark-700">Simple y transparente.</h2>
+        <p class="text-dark-300 mt-4 text-lg">Sin costos ocultos. Sin sorpresas.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto fade-in">
         <!-- Free -->
-        <div class="bg-white rounded-2xl p-8 border border-stone-200/60">
-          <div class="text-sm font-bold text-stone-400 uppercase tracking-wider mb-4">Contratista</div>
+        <div class="bg-white rounded-2xl p-8 border border-dark-100">
+          <div class="text-sm font-bold text-dark-300 uppercase tracking-wider mb-4">Contratista</div>
           <div class="flex items-baseline gap-1 mb-2">
-            <span class="text-4xl font-black text-stone-800">$0</span>
-            <span class="text-stone-400">/mes</span>
+            <span class="text-4xl font-black text-dark-700">$0</span>
+            <span class="text-dark-300">/mes</span>
           </div>
-          <p class="text-stone-400 text-sm mb-8">Gratis para siempre. Todas las herramientas.</p>
-          <a href="/#/login" class="block w-full bg-warm-100 hover:bg-warm-200 text-stone-600 font-semibold py-3 rounded-xl text-center text-sm transition-colors mb-8">
+          <p class="text-dark-300 text-sm mb-8">Gratis para siempre. Todas las herramientas.</p>
+          <a href="/#/login" class="block w-full bg-dark-50 hover:bg-dark-100 text-dark-500 font-semibold py-3 rounded-xl text-center text-sm transition-colors mb-8">
             Comenzar gratis
           </a>
-          <ul class="space-y-3 text-sm text-stone-500">
+          <ul class="space-y-3 text-sm text-dark-400">
             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500 text-xs"></i> Turnos ilimitados</li>
             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500 text-xs"></i> Cuentas de cobro con PDF</li>
             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500 text-xs"></i> Wallet y movimientos</li>
@@ -437,40 +431,40 @@
         </div>
 
         <!-- Pro -->
-        <div class="bg-stone-800 rounded-2xl p-8 text-white relative shadow-xl shadow-stone-900/15">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-warm-300 to-blush-300 text-stone-800 text-xs font-bold px-4 py-1 rounded-full">
+        <div class="bg-gradient-to-br from-brand-500 via-brand-600 to-dark-700 rounded-2xl p-8 text-white relative shadow-xl shadow-brand-500/20">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-coral-400 to-coral-300 text-dark-700 text-xs font-bold px-4 py-1 rounded-full">
             Mas popular
           </div>
-          <div class="text-sm font-bold text-stone-400 uppercase tracking-wider mb-4">Empresa</div>
+          <div class="text-sm font-bold text-brand-200 uppercase tracking-wider mb-4">Empresa</div>
           <div class="flex items-baseline gap-1 mb-2">
             <span class="text-4xl font-black">$199K</span>
-            <span class="text-stone-400">/mes</span>
+            <span class="text-brand-200">/mes</span>
           </div>
-          <p class="text-stone-400 text-sm mb-8">Por empresa. Contratistas ilimitados.</p>
-          <a href="/#/login" class="block w-full bg-white text-stone-800 font-bold py-3 rounded-xl text-center text-sm hover:bg-stone-50 transition-colors mb-8">
+          <p class="text-brand-200 text-sm mb-8">Por empresa. Contratistas ilimitados.</p>
+          <a href="/#/login" class="block w-full bg-white text-brand-600 font-bold py-3 rounded-xl text-center text-sm hover:bg-brand-50 transition-colors mb-8">
             Empezar prueba gratis
           </a>
           <ul class="space-y-3 text-sm">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300 text-xs"></i> Todo del plan Contratista</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300 text-xs"></i> Dashboard con KPIs</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300 text-xs"></i> Aprobaciones en lote</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300 text-xs"></i> Compliance documental</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300 text-xs"></i> Exportacion CSV</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300 text-xs"></i> Soporte prioritario</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-200 text-xs"></i> Todo del plan Contratista</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-200 text-xs"></i> Dashboard con KPIs</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-200 text-xs"></i> Aprobaciones en lote</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-200 text-xs"></i> Compliance documental</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-200 text-xs"></i> Exportacion CSV</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-200 text-xs"></i> Soporte prioritario</li>
           </ul>
         </div>
 
         <!-- Enterprise -->
-        <div class="bg-white rounded-2xl p-8 border border-stone-200/60">
-          <div class="text-sm font-bold text-stone-400 uppercase tracking-wider mb-4">Fintech / Enterprise</div>
+        <div class="bg-white rounded-2xl p-8 border border-dark-100">
+          <div class="text-sm font-bold text-dark-300 uppercase tracking-wider mb-4">Fintech / Enterprise</div>
           <div class="flex items-baseline gap-1 mb-2">
-            <span class="text-4xl font-black text-stone-800">Custom</span>
+            <span class="text-4xl font-black text-dark-700">Custom</span>
           </div>
-          <p class="text-stone-400 text-sm mb-8">API de scoring, libranza white-label.</p>
-          <a href="mailto:hola@cobrai.co" class="block w-full bg-warm-100 hover:bg-warm-200 text-stone-600 font-semibold py-3 rounded-xl text-center text-sm transition-colors mb-8">
+          <p class="text-dark-300 text-sm mb-8">API de scoring, libranza white-label.</p>
+          <a href="mailto:hola@cobrai.co" class="block w-full bg-dark-50 hover:bg-dark-100 text-dark-500 font-semibold py-3 rounded-xl text-center text-sm transition-colors mb-8">
             Contactar ventas
           </a>
-          <ul class="space-y-3 text-sm text-stone-500">
+          <ul class="space-y-3 text-sm text-dark-400">
             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500 text-xs"></i> API de scoring crediticio</li>
             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500 text-xs"></i> Motor de libranza</li>
             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500 text-xs"></i> Portafolio en vivo</li>
@@ -486,71 +480,70 @@
   <!-- CTA Final -->
   <section class="py-20 md:py-32">
     <div class="max-w-4xl mx-auto px-6 text-center fade-in">
-      <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-6 text-stone-800">
+      <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-6 text-dark-700">
         Tu trabajo vale.<br>
         <span class="gradient-text">Cobra como mereces.</span>
       </h2>
-      <p class="text-stone-400 text-lg max-w-2xl mx-auto mb-10">
+      <p class="text-dark-300 text-lg max-w-2xl mx-auto mb-10">
         Unete a los contratistas y empresas que ya estan usando CobrAI para transformar la forma en que cobran, pagan y acceden a credito en Colombia.
       </p>
-      <a href="/#/login" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold px-10 py-5 rounded-2xl text-lg transition-all hover:shadow-xl hover:shadow-brand-600/15 hover:-translate-y-0.5 shine">
+      <a href="/#/login" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold px-10 py-5 rounded-2xl text-lg transition-all hover:shadow-xl hover:shadow-brand-500/20 hover:-translate-y-0.5 shine">
         Crear cuenta gratis <i class="fa-solid fa-arrow-right"></i>
       </a>
-      <p class="text-stone-300 text-sm mt-4">No requiere tarjeta de credito</p>
+      <p class="text-dark-200 text-sm mt-4">No requiere tarjeta de credito</p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-stone-200/60 py-12">
+  <footer class="border-t border-dark-100 py-12">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-8">
         <div>
           <div class="flex items-center gap-2 mb-4">
-            <div class="w-7 h-7 bg-brand-600 rounded-lg flex items-center justify-center">
+            <div class="w-7 h-7 bg-brand-500 rounded-lg flex items-center justify-center">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
-            <span class="font-extrabold text-stone-700">Cobr<span class="text-brand-600">AI</span></span>
+            <span class="font-extrabold text-dark-700">Cobr<span class="text-brand-500">AI</span></span>
           </div>
-          <p class="text-stone-400 text-sm">Plataforma inteligente de cobro para contratistas independientes en Colombia.</p>
-          <p class="text-stone-300 text-xs mt-4">Bogota, Colombia</p>
+          <p class="text-dark-300 text-sm">Plataforma inteligente de cobro para contratistas independientes en Colombia.</p>
+          <p class="text-dark-200 text-xs mt-4">Bogota, Colombia</p>
         </div>
         <div>
-          <h4 class="font-bold text-sm mb-4 text-stone-700">Producto</h4>
-          <ul class="space-y-2 text-sm text-stone-400">
-            <li><a href="#features" class="hover:text-stone-700 transition-colors">Funcionalidades</a></li>
-            <li><a href="#pricing" class="hover:text-stone-700 transition-colors">Planes</a></li>
-            <li><a href="#scoring" class="hover:text-stone-700 transition-colors">Scoring</a></li>
-            <li><a href="#" class="hover:text-stone-700 transition-colors">API Docs</a></li>
+          <h4 class="font-bold text-sm mb-4 text-dark-700">Producto</h4>
+          <ul class="space-y-2 text-sm text-dark-300">
+            <li><a href="#features" class="hover:text-dark-700 transition-colors">Funcionalidades</a></li>
+            <li><a href="#pricing" class="hover:text-dark-700 transition-colors">Planes</a></li>
+            <li><a href="#scoring" class="hover:text-dark-700 transition-colors">Scoring</a></li>
+            <li><a href="#" class="hover:text-dark-700 transition-colors">API Docs</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-sm mb-4 text-stone-700">Legal</h4>
-          <ul class="space-y-2 text-sm text-stone-400">
-            <li><a href="#" class="hover:text-stone-700 transition-colors">Terminos de uso</a></li>
-            <li><a href="#" class="hover:text-stone-700 transition-colors">Politica de privacidad</a></li>
-            <li><a href="#" class="hover:text-stone-700 transition-colors">Habeas data</a></li>
-            <li><a href="#" class="hover:text-stone-700 transition-colors">Ley 1527 de 2012</a></li>
+          <h4 class="font-bold text-sm mb-4 text-dark-700">Legal</h4>
+          <ul class="space-y-2 text-sm text-dark-300">
+            <li><a href="#" class="hover:text-dark-700 transition-colors">Terminos de uso</a></li>
+            <li><a href="#" class="hover:text-dark-700 transition-colors">Politica de privacidad</a></li>
+            <li><a href="#" class="hover:text-dark-700 transition-colors">Habeas data</a></li>
+            <li><a href="#" class="hover:text-dark-700 transition-colors">Ley 1527 de 2012</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-sm mb-4 text-stone-700">Contacto</h4>
-          <ul class="space-y-2 text-sm text-stone-400">
-            <li><a href="mailto:hola@cobrai.co" class="hover:text-stone-700 transition-colors">hola@cobrai.co</a></li>
-            <li><a href="#" class="hover:text-stone-700 transition-colors">WhatsApp</a></li>
-            <li><a href="#" class="hover:text-stone-700 transition-colors">LinkedIn</a></li>
+          <h4 class="font-bold text-sm mb-4 text-dark-700">Contacto</h4>
+          <ul class="space-y-2 text-sm text-dark-300">
+            <li><a href="mailto:hola@cobrai.co" class="hover:text-dark-700 transition-colors">hola@cobrai.co</a></li>
+            <li><a href="#" class="hover:text-dark-700 transition-colors">WhatsApp</a></li>
+            <li><a href="#" class="hover:text-dark-700 transition-colors">LinkedIn</a></li>
           </ul>
         </div>
       </div>
-      <div class="mt-12 pt-8 border-t border-stone-200/40 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-xs text-stone-300">© 2026 CobrAI. Todos los derechos reservados.</p>
-        <p class="text-xs text-stone-300">Hecho con <i class="fa-solid fa-bolt text-brand-500"></i> en Bogota</p>
+      <div class="mt-12 pt-8 border-t border-dark-100/60 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-xs text-dark-200">© 2026 CobrAI. Todos los derechos reservados.</p>
+        <p class="text-xs text-dark-200">Hecho con <i class="fa-solid fa-bolt text-coral-400"></i> en Bogota</p>
       </div>
     </div>
   </footer>
 
   <!-- Scroll animations + Counter -->
   <script>
-    // Intersection Observer for fade-in
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -563,7 +556,6 @@
       observer.observe(el);
     });
 
-    // Animated counters
     function animateCounters() {
       document.querySelectorAll('.stat-counter').forEach(function(el) {
         var target = parseFloat(el.dataset.target);
@@ -595,7 +587,6 @@
     var firstCounter = document.querySelector('.stat-counter');
     if (firstCounter) counterObserver.observe(firstCounter.closest('.grid'));
 
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(a) {
       a.addEventListener('click', function(e) {
         var target = document.querySelector(a.getAttribute('href'));
