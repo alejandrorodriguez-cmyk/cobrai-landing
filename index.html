@@ -51,7 +51,17 @@
     .nav-links a:hover { color: var(--slate-900); }
     .nav-cta { background: var(--brand-600); color: #fff; font-size: 14px; font-weight: 600; padding: 10px 24px; border-radius: 12px; text-decoration: none; transition: all 0.3s; }
     .nav-cta:hover { background: var(--brand-700); box-shadow: 0 8px 24px rgba(79,70,229,0.3); transform: translateY(-1px); }
-    @media (max-width: 768px) { .nav-links { display: none; } }
+    /* Mobile hamburger */
+    .nav-hamburger { display: none; width: 40px; height: 40px; border: none; background: none; cursor: pointer; position: relative; z-index: 200; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--slate-700); margin: 5px auto; border-radius: 2px; transition: all 0.3s; }
+    .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu { position: fixed; inset: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); z-index: 150; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a { font-size: 24px; font-weight: 700; color: var(--slate-800); text-decoration: none; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--brand-600); }
+    @media (max-width: 768px) { .nav-links { display: none; } .nav-hamburger { display: block; } }
 
     /* === HERO === */
     .hero { padding: 160px 0 100px; position: relative; overflow: hidden; }
@@ -345,9 +355,74 @@
     .ticker span { font-size: 13px; font-weight: 500; color: var(--slate-500); display: flex; align-items: center; gap: 8px; }
     .ticker span i { color: var(--brand-400); }
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* === CUSTOM CURSOR === */
+    @media (pointer: fine) {
+      .cursor-dot { position: fixed; width: 8px; height: 8px; background: var(--brand-600); border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s, opacity 0.3s; mix-blend-mode: difference; }
+      .cursor-ring { position: fixed; width: 36px; height: 36px; border: 2px solid rgba(79,70,229,0.4); border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.15s ease-out, width 0.3s, height 0.3s, border-color 0.3s; margin-left: -14px; margin-top: -14px; }
+      .cursor-ring.hover { width: 56px; height: 56px; margin-left: -24px; margin-top: -24px; border-color: rgba(79,70,229,0.6); }
+      body { cursor: none; }
+      a, button, input, .nav-hamburger, .actor-card, .feature-card, .biz-card, .legal-badge, .tri-layer, .xai-feature, .pain-mini-card { cursor: none; }
+    }
+
+    /* === BACK TO TOP === */
+    .back-to-top { position: fixed; bottom: 32px; right: 32px; width: 48px; height: 48px; background: var(--brand-600); color: #fff; border: none; border-radius: 14px; font-size: 18px; cursor: pointer; z-index: 90; opacity: 0; transform: translateY(20px); transition: all 0.3s; box-shadow: 0 8px 24px rgba(79,70,229,0.3); display: flex; align-items: center; justify-content: center; }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: var(--brand-700); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(79,70,229,0.4); }
+    @media (pointer: fine) { .back-to-top { cursor: none; } }
+
+    /* === NAV ACTIVE LINK === */
+    .nav-links a { position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--brand-600); border-radius: 2px; transition: width 0.3s; }
+    .nav-links a.active { color: var(--brand-600); }
+    .nav-links a.active::after { width: 100%; }
+
+    /* === TYPEWRITER === */
+    .typewriter-cursor { display: inline-block; width: 3px; height: 0.9em; background: var(--brand-500); margin-left: 4px; animation: blink-cursor 0.8s infinite; vertical-align: text-bottom; }
+    @keyframes blink-cursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* === MOUSE GLOW ON CARDS === */
+    .glow-card { position: relative; }
+    .glow-card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 1; background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99,102,241,0.08), transparent 40%); }
+    .glow-card:hover::before { opacity: 1; }
+    .section-dark .glow-card::before { background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99,102,241,0.12), transparent 40%); }
+
+    /* === MAGNETIC BUTTONS === */
+    .magnetic { transition: transform 0.2s ease-out; }
+
+    /* === STICKY MOBILE CTA === */
+    .sticky-mobile-cta { display: none; }
+    @media (max-width: 768px) {
+      .sticky-mobile-cta { display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; padding: 12px 16px; background: rgba(255,255,255,0.95); backdrop-filter: blur(16px); border-top: 1px solid var(--slate-200); gap: 12px; transform: translateY(100%); transition: transform 0.3s; }
+      .sticky-mobile-cta.visible { transform: translateY(0); }
+      .sticky-mobile-cta a { flex: 1; text-align: center; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; text-decoration: none; }
+      .sticky-mobile-cta .smc-primary { background: var(--brand-600); color: #fff; }
+      .sticky-mobile-cta .smc-secondary { background: var(--slate-100); color: var(--slate-700); }
+      .back-to-top { bottom: 80px; }
+    }
+
+    /* === STAGGERED TABLE ROWS === */
+    .profiles-table tbody tr { opacity: 0; transform: translateX(-20px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .profiles-table tbody tr.row-visible { opacity: 1; transform: translateX(0); }
+
+    /* === PARALLAX HERO LAYERS === */
+    .hero-parallax { transition: transform 0.1s linear; will-change: transform; }
+
+    /* === RIPPLE EFFECT === */
+    .ripple { position: relative; overflow: hidden; }
+    .ripple-wave { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.3); transform: scale(0); animation: ripple-anim 0.6s ease-out; pointer-events: none; }
+    @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
+
+    /* === SMOOTH SECTION DIVIDERS === */
+    .section-divider { height: 80px; position: relative; margin-top: -1px; }
+    .section-divider svg { position: absolute; bottom: 0; width: 100%; height: 80px; }
   </style>
 </head>
 <body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- Scroll Progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -361,22 +436,46 @@
       </div>
       <div class="nav-logo-text">Cobr<span>AI</span></div>
     </a>
-    <div class="nav-links">
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#actores">Ecosistema</a>
-      <a href="#scoring">Scoring IA</a>
-      <a href="#plataforma">Plataforma</a>
-      <a href="#modelo">Modelo</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#como-funciona" data-section="como-funciona">Cómo funciona</a>
+      <a href="#actores" data-section="actores">Ecosistema</a>
+      <a href="#scoring" data-section="scoring">Scoring IA</a>
+      <a href="#plataforma" data-section="plataforma">Plataforma</a>
+      <a href="#modelo" data-section="modelo">Modelo</a>
     </div>
-    <a href="#contacto" class="nav-cta">Solicitar demo</a>
+    <a href="#contacto" class="nav-cta magnetic ripple">Solicitar demo</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#como-funciona">Cómo funciona</a>
+  <a href="#actores">Ecosistema</a>
+  <a href="#scoring">Scoring IA</a>
+  <a href="#plataforma">Plataforma</a>
+  <a href="#modelo">Modelo</a>
+  <a href="#contacto" style="color:var(--brand-600)">Solicitar demo</a>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-mobile-cta" id="stickyMobileCta">
+  <a href="#scoring" class="smc-secondary">Ver scoring</a>
+  <a href="#contacto" class="smc-primary">Solicitar demo</a>
+</div>
+
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="orbit-container">
+  <div class="hero-bg hero-parallax" data-speed="0.3"></div>
+  <div class="hero-grid hero-parallax" data-speed="0.15"></div>
+  <div class="orbit-container hero-parallax" data-speed="0.2">
     <div class="orbit-ring"><div class="orbit-dot"></div></div>
     <div class="orbit-ring"><div class="orbit-dot"></div></div>
     <div class="orbit-ring"><div class="orbit-dot"></div></div>
@@ -388,16 +487,16 @@
     </div>
     <h1 class="fade-up fade-up-delay-1">
       Tu trabajo construye<br>
-      <span class="gradient-text">tu historial crediticio.</span>
+      <span class="gradient-text" id="typewriterTarget">tu historial crediticio.</span>
     </h1>
     <p class="fade-up fade-up-delay-2">
       CobrAI es la plataforma tecnológica que convierte los datos laborales de contratistas independientes en scoring crediticio triangulado con IA, permitiendo que entidades financieras les ofrezcan crédito formal por primera vez.
     </p>
     <div class="hero-buttons fade-up fade-up-delay-3">
-      <a href="#como-funciona" class="btn-primary">
+      <a href="#como-funciona" class="btn-primary magnetic ripple">
         Descubre cómo funciona <i class="fa-solid fa-arrow-right"></i>
       </a>
-      <a href="#scoring" class="btn-secondary">
+      <a href="#scoring" class="btn-secondary magnetic ripple">
         <i class="fa-solid fa-brain" style="color:var(--brand-600)"></i> Ver scoring en vivo
       </a>
     </div>
@@ -575,7 +674,7 @@
 
     <div class="actors-grid">
       <!-- Contratista -->
-      <div class="actor-card fade-up">
+      <div class="actor-card glow-card fade-up">
         <div class="card-accent" style="background: linear-gradient(90deg, var(--brand-500), var(--brand-600));"></div>
         <div class="card-blob" style="background: var(--brand-500);"></div>
         <div class="actor-icon" style="background: linear-gradient(135deg, var(--brand-500), var(--brand-700));">
@@ -924,32 +1023,32 @@
     </div>
 
     <div class="features-grid fade-up">
-      <div class="feature-card">
+      <div class="feature-card glow-card">
         <div class="f-icon" style="background:rgba(99,102,241,0.15); color:var(--brand-400);"><i class="fa-solid fa-calendar-check"></i></div>
         <h4>Gestión de turnos</h4>
         <p>Registro de turnos 12h/24h con check-in GPS, aprobación empresarial en lote y cálculo automático de valores.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card glow-card">
         <div class="f-icon" style="background:rgba(16,185,129,0.15); color:var(--emerald-500);"><i class="fa-solid fa-file-invoice-dollar"></i></div>
         <h4>Facturación digital</h4>
         <p>Cuentas de cobro generadas desde turnos aprobados. PDF profesional con numeración secuencial y firma electrónica.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card glow-card">
         <div class="f-icon" style="background:rgba(245,158,11,0.15); color:var(--amber-500);"><i class="fa-solid fa-shield-halved"></i></div>
         <h4>Compliance documental</h4>
         <p>Tracking automático de ARL, EPS, cédula, RUT, RETHUS, certificaciones. Alertas de vencimiento en tiempo real.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card glow-card">
         <div class="f-icon" style="background:rgba(139,92,246,0.15); color:var(--violet-500);"><i class="fa-solid fa-map-location-dot"></i></div>
         <h4>Geofence y mapa</h4>
         <p>Validación de ubicación en check-in/out. Mapa en vivo para la empresa. Perímetro configurable por sede.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card glow-card">
         <div class="f-icon" style="background:rgba(244,63,94,0.15); color:var(--rose-500);"><i class="fa-solid fa-file-signature"></i></div>
         <h4>Contratos y firma-e</h4>
         <p>Contratos digitales con firma electrónica válida (Ley 527/99). Audit trail con IP, timestamp y user-agent.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card glow-card">
         <div class="f-icon" style="background:rgba(99,102,241,0.15); color:var(--brand-400);"><i class="fa-solid fa-robot"></i></div>
         <h4>Asistente IA</h4>
         <p>Chat inteligente contextual por rol. El contratista pregunta en lenguaje natural y obtiene respuestas de sus datos.</p>
@@ -1005,19 +1104,19 @@
     </div>
 
     <div class="biz-cards fade-up">
-      <div class="biz-card">
+      <div class="biz-card glow-card">
         <div class="biz-icon" style="background:rgba(16,185,129,0.1); color:var(--emerald-600);"><i class="fa-solid fa-hospital"></i></div>
         <h4>Empresa</h4>
         <div class="biz-model">SaaS mensual</div>
         <p>La empresa paga suscripción por gestionar sus contratistas: compliance, turnos, pagos, contratos. Le ahorra tiempo, reduce riesgo legal y le da control total.</p>
       </div>
-      <div class="biz-card" style="border-color:var(--brand-200); background:var(--brand-50);">
+      <div class="biz-card glow-card" style="border-color:var(--brand-200); background:var(--brand-50);">
         <div class="biz-icon" style="background:rgba(79,70,229,0.15); color:var(--brand-600);"><i class="fa-solid fa-landmark"></i></div>
         <h4>Entidad financiera</h4>
         <div class="biz-model">Comisión por originación</div>
         <p>CobrAI cobra comisión por cada crédito originado a través de la plataforma. El banco accede a miles de contratistas pre-evaluados con IA en un solo canal.</p>
       </div>
-      <div class="biz-card">
+      <div class="biz-card glow-card">
         <div class="biz-icon" style="background:rgba(139,92,246,0.1); color:var(--violet-600);"><i class="fa-solid fa-database"></i></div>
         <h4>API de scoring</h4>
         <div class="biz-model">Fee por consulta</div>
@@ -1034,7 +1133,7 @@
     <p class="fade-up fade-up-delay-1">
       5 millones de contratistas en Colombia merecen acceso al sistema financiero. La tecnología ya está construida.
     </p>
-    <a href="mailto:hola@cobrai.co" class="btn-white fade-up fade-up-delay-2">
+    <a href="mailto:hola@cobrai.co" class="btn-white magnetic ripple fade-up fade-up-delay-2">
       Solicitar demo <i class="fa-solid fa-arrow-right"></i>
     </a>
   </div>
@@ -1087,27 +1186,80 @@
 
 <script>
 (function() {
-  // Scroll progress bar
+  // ========== SCROLL PROGRESS ==========
   var progressBar = document.getElementById('scrollProgress');
-  window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  var backToTop = document.getElementById('backToTop');
+  var stickyMobileCta = document.getElementById('stickyMobileCta');
+
+  function onScroll() {
     var scrollTop = document.documentElement.scrollTop;
     var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     progressBar.style.width = (scrollTop / scrollHeight * 100) + '%';
+    nav.classList.toggle('scrolled', scrollTop > 40);
+    backToTop.classList.toggle('visible', scrollTop > 600);
+    if (stickyMobileCta) stickyMobileCta.classList.toggle('visible', scrollTop > 400);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ========== BACK TO TOP ==========
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Nav scroll effect
-  var nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', function() {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+  // ========== HAMBURGER MENU ==========
+  var hamburger = document.getElementById('navHamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
 
-  // Intersection Observer for fade-up
+  // ========== ACTIVE NAV LINK ON SCROLL ==========
+  var sections = document.querySelectorAll('section[id]');
+  var navLinksAll = document.querySelectorAll('#navLinks a[data-section]');
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        navLinksAll.forEach(function(link) { link.classList.remove('active'); });
+        var activeLink = document.querySelector('#navLinks a[data-section="' + entry.target.id + '"]');
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-72px 0px -50% 0px' });
+  sections.forEach(function(s) { sectionObserver.observe(s); });
+
+  // ========== FADE-UP OBSERVER ==========
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 
-  // Animated counters
+  // ========== STAGGERED TABLE ROWS ==========
+  var tableRows = document.querySelectorAll('.profiles-table tbody tr');
+  var rowObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var rows = e.target.querySelectorAll('tr');
+        rows.forEach(function(row, i) {
+          setTimeout(function() { row.classList.add('row-visible'); }, i * 100);
+        });
+        rowObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  var tbody = document.querySelector('.profiles-table tbody');
+  if (tbody) rowObserver.observe(tbody);
+
+  // ========== ANIMATED COUNTERS ==========
   function animateCounter(el) {
     var target = parseFloat(el.dataset.target);
     var suffix = el.textContent.replace(/[0-9.]/g, '');
@@ -1133,7 +1285,7 @@
   var statsEl = document.querySelector('.stats');
   if (statsEl) counterObserver.observe(statsEl);
 
-  // Interactive scoring slider (triangulado)
+  // ========== SCORING SLIDER ==========
   var slider = document.getElementById('scoreSlider');
   var scoreArc = document.getElementById('scoreArc');
   var scoreNumber = document.getElementById('scoreNumber');
@@ -1149,50 +1301,201 @@
     scoreArc.setAttribute('stroke-dashoffset', offset);
     scoreNumber.textContent = v;
 
-    if (v >= 650) {
-      scoreEligible.textContent = 'Si';
-      scoreEligible.style.color = '#10B981';
-    } else {
-      scoreEligible.textContent = 'No';
-      scoreEligible.style.color = '#F43F5E';
-    }
+    if (v >= 650) { scoreEligible.textContent = 'Sí'; scoreEligible.style.color = '#10B981'; }
+    else { scoreEligible.textContent = 'No'; scoreEligible.style.color = '#F43F5E'; }
 
     if (v >= 800) { scoreRisk.textContent = 'Muy bajo'; scoreRisk.style.color = '#10B981'; }
     else if (v >= 650) { scoreRisk.textContent = 'Bajo'; scoreRisk.style.color = '#10B981'; }
     else if (v >= 450) { scoreRisk.textContent = 'Medio'; scoreRisk.style.color = '#F59E0B'; }
     else { scoreRisk.textContent = 'Alto'; scoreRisk.style.color = '#F43F5E'; }
 
-    if (v >= 800) { scoreCupo.textContent = '$5.000.000'; }
-    else if (v >= 650) { scoreCupo.textContent = '$2.500.000'; }
-    else if (v >= 450) { scoreCupo.textContent = '$800.000'; }
-    else { scoreCupo.textContent = '$0'; }
+    if (v >= 800) scoreCupo.textContent = '$5.000.000';
+    else if (v >= 650) scoreCupo.textContent = '$2.500.000';
+    else if (v >= 450) scoreCupo.textContent = '$800.000';
+    else scoreCupo.textContent = '$0';
 
-    // Mora estimada
     if (v >= 800) { scoreMora.textContent = '2.1%'; scoreMora.style.color = '#10B981'; }
     else if (v >= 650) { scoreMora.textContent = '3.8%'; scoreMora.style.color = '#10B981'; }
     else if (v >= 450) { scoreMora.textContent = '12.5%'; scoreMora.style.color = '#F59E0B'; }
     else { scoreMora.textContent = '28%+'; scoreMora.style.color = '#F43F5E'; }
 
-    // Perfil IA
     if (v >= 800) { scorePerfil.textContent = 'Consistente'; scorePerfil.style.color = '#10B981'; }
     else if (v >= 650) { scorePerfil.textContent = 'Estrella oculta'; scorePerfil.style.color = '#6366F1'; }
-    else if (v >= 450) { scorePerfil.textContent = 'En observacion'; scorePerfil.style.color = '#F59E0B'; }
+    else if (v >= 450) { scorePerfil.textContent = 'En observación'; scorePerfil.style.color = '#F59E0B'; }
     else if (v >= 200) { scorePerfil.textContent = 'Nuevo'; scorePerfil.style.color = '#F59E0B'; }
     else { scorePerfil.textContent = 'Sin datos'; scorePerfil.style.color = '#F43F5E'; }
   }
-
   if (slider) {
     slider.addEventListener('input', function() { updateScore(this.value); });
     updateScore(720);
   }
 
-  // Smooth scroll
+  // ========== SMOOTH SCROLL (closes mobile menu too) ==========
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
       var target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      if (target) {
+        e.preventDefault();
+        var offset = 72;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
     });
   });
+
+  // ========== TYPEWRITER EFFECT ==========
+  var twTarget = document.getElementById('typewriterTarget');
+  if (twTarget) {
+    var phrases = ['tu historial crediticio.', 'tu acceso a crédito formal.', 'tu independencia financiera.'];
+    var phraseIdx = 0, charIdx = 0, deleting = false, pauseTime = 2000;
+    var original = twTarget.textContent;
+    var cursor = document.createElement('span');
+    cursor.className = 'typewriter-cursor';
+    twTarget.parentNode.insertBefore(cursor, twTarget.nextSibling);
+
+    function typeLoop() {
+      var current = phrases[phraseIdx];
+      if (!deleting) {
+        twTarget.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        if (charIdx === current.length) {
+          setTimeout(function() { deleting = true; typeLoop(); }, pauseTime);
+          return;
+        }
+        setTimeout(typeLoop, 60);
+      } else {
+        twTarget.textContent = current.substring(0, charIdx);
+        charIdx--;
+        if (charIdx < 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          charIdx = 0;
+          setTimeout(typeLoop, 400);
+          return;
+        }
+        setTimeout(typeLoop, 30);
+      }
+    }
+    setTimeout(function() { charIdx = 0; typeLoop(); }, pauseTime);
+  }
+
+  // ========== CUSTOM CURSOR ==========
+  var dot = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+  if (window.matchMedia('(pointer: fine)').matches && dot && ring) {
+    var mx = 0, my = 0, dx = 0, dy = 0;
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    });
+    function animateCursor() {
+      dx += (mx - dx) * 0.15; dy += (my - dy) * 0.15;
+      ring.style.left = dx + 'px'; ring.style.top = dy + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    var hoverEls = 'a, button, input, .actor-card, .feature-card, .biz-card, .legal-badge, .tri-layer, .xai-feature, .pain-mini-card, .nav-hamburger';
+    document.querySelectorAll(hoverEls).forEach(function(el) {
+      el.addEventListener('mouseenter', function() { ring.classList.add('hover'); dot.style.transform = 'scale(1.5)'; });
+      el.addEventListener('mouseleave', function() { ring.classList.remove('hover'); dot.style.transform = 'scale(1)'; });
+    });
+    document.addEventListener('mouseleave', function() { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+    document.addEventListener('mouseenter', function() { dot.style.opacity = '1'; ring.style.opacity = '1'; });
+  } else {
+    if (dot) dot.style.display = 'none';
+    if (ring) ring.style.display = 'none';
+  }
+
+  // ========== MOUSE GLOW ON CARDS ==========
+  document.querySelectorAll('.glow-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+      card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+    });
+  });
+
+  // ========== MAGNETIC BUTTONS ==========
+  document.querySelectorAll('.magnetic').forEach(function(btn) {
+    btn.addEventListener('mousemove', function(e) {
+      var rect = btn.getBoundingClientRect();
+      var x = e.clientX - rect.left - rect.width / 2;
+      var y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = 'translate(' + (x * 0.2) + 'px, ' + (y * 0.2) + 'px)';
+    });
+    btn.addEventListener('mouseleave', function() {
+      btn.style.transform = '';
+    });
+  });
+
+  // ========== RIPPLE EFFECT ==========
+  document.querySelectorAll('.ripple').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var rect = btn.getBoundingClientRect();
+      var wave = document.createElement('span');
+      wave.className = 'ripple-wave';
+      var size = Math.max(rect.width, rect.height);
+      wave.style.width = wave.style.height = size + 'px';
+      wave.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      wave.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      btn.appendChild(wave);
+      setTimeout(function() { wave.remove(); }, 600);
+    });
+  });
+
+  // ========== HERO PARALLAX ==========
+  var parallaxEls = document.querySelectorAll('.hero-parallax');
+  if (parallaxEls.length) {
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.pageYOffset;
+      if (scrollTop < 800) {
+        parallaxEls.forEach(function(el) {
+          var speed = parseFloat(el.dataset.speed) || 0.2;
+          el.style.transform = 'translateY(' + (scrollTop * speed) + 'px)';
+        });
+      }
+    }, { passive: true });
+  }
+
+  // ========== TILT EFFECT ON SCORE DISPLAY ==========
+  var scoreDisplay = document.querySelector('.score-display');
+  if (scoreDisplay && window.matchMedia('(pointer: fine)').matches) {
+    scoreDisplay.style.transition = 'transform 0.1s ease-out';
+    scoreDisplay.addEventListener('mousemove', function(e) {
+      var rect = scoreDisplay.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      scoreDisplay.style.transform = 'perspective(800px) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg)';
+    });
+    scoreDisplay.addEventListener('mouseleave', function() {
+      scoreDisplay.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg)';
+    });
+  }
+
+  // ========== XAI REPORT TYPING SIMULATION ==========
+  var xaiReport = document.querySelector('.xai-report');
+  if (xaiReport) {
+    var xaiObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          xaiReport.style.animation = 'none';
+          var children = xaiReport.querySelectorAll('.xai-report-name, .xai-report-score, .xai-report-text, .xai-metric');
+          children.forEach(function(child, i) {
+            child.style.opacity = '0';
+            child.style.transform = 'translateY(10px)';
+            child.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+            setTimeout(function() {
+              child.style.opacity = '1';
+              child.style.transform = 'translateY(0)';
+            }, 300 + i * 200);
+          });
+          xaiObserver.unobserve(xaiReport);
+        }
+      });
+    }, { threshold: 0.3 });
+    xaiObserver.observe(xaiReport);
+  }
 })();
 </script>
 </body>
