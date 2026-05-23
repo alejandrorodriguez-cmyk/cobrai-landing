@@ -119,34 +119,111 @@
     .actor-features li i { margin-top: 3px; font-size: 12px; flex-shrink: 0; }
     @media (max-width: 768px) { .actors-grid { grid-template-columns: 1fr; } }
 
-    /* === SCORING INTERACTIVE === */
-    .scoring-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .scoring-factors { display: flex; flex-direction: column; gap: 16px; }
-    .scoring-factor { display: flex; align-items: center; gap: 16px; padding: 16px; border-radius: 16px; background: var(--slate-50); border: 1px solid var(--slate-100); transition: all 0.3s; cursor: default; }
-    .scoring-factor:hover { background: var(--brand-50); border-color: var(--brand-200); transform: translateX(4px); }
-    .factor-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--brand-50); color: var(--brand-600); font-size: 16px; }
-    .scoring-factor:hover .factor-icon { background: var(--brand-100); }
-    .factor-info { flex: 1; }
-    .factor-info h5 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
-    .factor-info p { font-size: 12px; color: var(--slate-500); }
-    .factor-pts { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: var(--brand-600); }
+    /* === SCORING TRIANGULADO === */
+    .scoring-intro { text-align: center; max-width: 800px; margin: 0 auto 64px; }
+    .scoring-intro .section-subtitle { margin: 0 auto; }
 
+    .tri-architecture { display: flex; flex-direction: column; gap: 0; max-width: 1000px; margin: 0 auto 64px; position: relative; }
+    .tri-layer { border-radius: 20px; padding: 32px; position: relative; transition: all 0.4s; }
+    .tri-layer:hover { transform: translateY(-4px); }
+    .tri-layer-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .tri-layer-num { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .tri-layer-title { font-size: 18px; font-weight: 800; }
+    .tri-layer-badge { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; margin-left: auto; }
+    .tri-factors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .tri-factor { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+    .tri-factor i { font-size: 14px; flex-shrink: 0; width: 20px; text-align: center; }
+    @media (max-width: 768px) { .tri-factors { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .tri-factors { grid-template-columns: 1fr; } }
+
+    .tri-layer-1 { background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.03)); border: 1px solid rgba(16,185,129,0.2); }
+    .tri-layer-1 .tri-layer-num { background: var(--emerald-600); }
+    .tri-layer-1 .tri-layer-title { color: var(--emerald-600); }
+    .tri-layer-1 .tri-layer-badge { background: rgba(16,185,129,0.1); color: var(--emerald-600); }
+    .tri-layer-1 .tri-factor { background: rgba(16,185,129,0.06); color: var(--slate-700); }
+    .tri-layer-1 .tri-factor i { color: var(--emerald-500); }
+
+    .tri-layer-2 { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(139,92,246,0.03)); border: 1px solid rgba(139,92,246,0.2); }
+    .tri-layer-2 .tri-layer-num { background: var(--violet-600); }
+    .tri-layer-2 .tri-layer-title { color: var(--violet-600); }
+    .tri-layer-2 .tri-layer-badge { background: rgba(139,92,246,0.1); color: var(--violet-600); }
+    .tri-layer-2 .tri-factor { background: rgba(139,92,246,0.06); color: var(--slate-700); }
+    .tri-layer-2 .tri-factor i { color: var(--violet-500); }
+
+    .tri-layer-3 { background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(236,72,153,0.05)); border: 1px solid rgba(79,70,229,0.25); }
+    .tri-layer-3 .tri-layer-num { background: linear-gradient(135deg, var(--brand-600), #EC4899); }
+    .tri-layer-3 .tri-layer-title { background: linear-gradient(135deg, var(--brand-600), #EC4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .tri-layer-3 .tri-layer-badge { background: rgba(79,70,229,0.1); color: var(--brand-600); }
+    .tri-layer-3 .tri-factor { background: rgba(79,70,229,0.06); color: var(--slate-700); }
+    .tri-layer-3 .tri-factor i { color: var(--brand-500); }
+
+    .tri-connector { display: flex; justify-content: center; padding: 8px 0; }
+    .tri-connector-line { width: 2px; height: 32px; background: linear-gradient(to bottom, var(--slate-300), var(--brand-400)); position: relative; }
+    .tri-connector-line::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: var(--brand-500); border-radius: 50%; }
+
+    /* Profiles table */
+    .profiles-section { margin-top: 64px; }
+    .profiles-table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--slate-200); }
+    .profiles-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .profiles-table th { background: var(--slate-900); color: #fff; padding: 14px 16px; text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+    .profiles-table td { padding: 14px 16px; border-bottom: 1px solid var(--slate-100); vertical-align: middle; }
+    .profiles-table tr:last-child td { border-bottom: none; }
+    .profiles-table tr:hover td { background: var(--brand-50); }
+    .profile-name { font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .profile-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .profile-action { font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 8px; display: inline-block; }
+    @media (max-width: 768px) { .profiles-table { font-size: 12px; } .profiles-table th, .profiles-table td { padding: 10px 12px; } }
+
+    /* XAI report */
+    .xai-section { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 64px; }
+    .xai-report { background: linear-gradient(145deg, var(--slate-900), var(--slate-800)); border-radius: 20px; padding: 32px; position: relative; overflow: hidden; }
+    .xai-report::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 10%, rgba(99,102,241,0.12), transparent 50%); }
+    .xai-report * { position: relative; }
+    .xai-report-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .xai-report-header i { color: var(--brand-400); font-size: 20px; }
+    .xai-report-header span { color: var(--slate-400); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .xai-report-name { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .xai-report-score { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 900; background: linear-gradient(135deg, #6366F1, #EC4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 16px 0; }
+    .xai-report-text { font-size: 14px; color: var(--slate-300); line-height: 1.8; }
+    .xai-report-text strong { color: #fff; }
+    .xai-report-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+    .xai-metric { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 16px; }
+    .xai-metric-label { font-size: 11px; color: var(--slate-400); text-transform: uppercase; letter-spacing: 0.5px; }
+    .xai-metric-value { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; color: #fff; margin-top: 4px; }
+    .xai-metric-value.good { color: var(--emerald-500); }
+
+    .xai-features { display: flex; flex-direction: column; gap: 20px; }
+    .xai-feature { display: flex; gap: 16px; padding: 20px; border-radius: 16px; border: 1px solid var(--slate-200); transition: all 0.3s; }
+    .xai-feature:hover { border-color: var(--brand-200); background: var(--brand-50); transform: translateX(4px); }
+    .xai-feature-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+    .xai-feature h5 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .xai-feature p { font-size: 13px; color: var(--slate-500); line-height: 1.6; }
+    @media (max-width: 768px) { .xai-section { grid-template-columns: 1fr; } }
+
+    /* Score display (simulador) */
+    .score-sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 64px; }
     .score-display { background: linear-gradient(145deg, var(--slate-900), var(--slate-800)); border-radius: 28px; padding: 48px; text-align: center; position: relative; overflow: hidden; }
     .score-display::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(99,102,241,0.15), transparent 50%); }
     .score-display * { position: relative; }
     .score-label { font-size: 14px; color: var(--slate-400); font-weight: 500; margin-bottom: 24px; }
-    .score-svg { width: 220px; height: 220px; margin: 0 auto; }
-    .score-details { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .score-svg { width: 200px; height: 200px; margin: 0 auto; }
+    .score-details { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
     .score-detail { display: flex; justify-content: space-between; font-size: 14px; padding: 0 16px; }
     .score-detail .label { color: var(--slate-400); }
     .score-detail .value { color: #fff; font-weight: 600; }
     .score-detail .value.good { color: var(--emerald-500); }
-
-    .score-slider-wrap { margin-top: 32px; padding: 0 16px; }
+    .score-slider-wrap { margin-top: 24px; padding: 0 16px; }
     .score-slider-label { font-size: 12px; color: var(--slate-400); margin-bottom: 8px; text-align: left; }
     input[type="range"] { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--rose-500), var(--amber-500), var(--emerald-500)); outline: none; }
     input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    @media (max-width: 768px) { .scoring-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    .score-sim-text h3 { font-size: 28px; font-weight: 900; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .score-sim-text p { font-size: 15px; color: var(--slate-500); line-height: 1.7; margin-bottom: 20px; }
+    .score-sim-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .score-sim-stat { background: var(--slate-50); border-radius: 12px; padding: 16px; text-align: center; }
+    .score-sim-stat .mono { font-size: 24px; font-weight: 800; color: var(--brand-600); }
+    .score-sim-stat span:last-child { display: block; font-size: 12px; color: var(--slate-500); margin-top: 4px; }
+    @media (max-width: 768px) { .score-sim-grid { grid-template-columns: 1fr; } }
 
     /* === FEATURE GRID === */
     .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -158,7 +235,7 @@
     @media (max-width: 768px) { .features-grid { grid-template-columns: 1fr; } }
 
     /* === LEGAL BADGES === */
-    .legal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+    .legal-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 48px; }
     .legal-badge { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px; text-align: center; transition: all 0.3s; }
     .legal-badge:hover { background: rgba(255,255,255,0.08); border-color: var(--brand-500); transform: translateY(-2px); }
     .legal-badge i { font-size: 28px; color: var(--brand-400); margin-bottom: 16px; display: block; }
@@ -545,7 +622,7 @@
         <h3>Entidad Financiera</h3>
         <p class="actor-desc">Bancos y entidades reguladas que quieren colocar credito en un mercado de millones de contratistas que hoy no pueden evaluar.</p>
         <ul class="actor-features">
-          <li><i class="fa-solid fa-check" style="color:var(--violet-600)"></i> API de scoring crediticio alternativo con IA</li>
+          <li><i class="fa-solid fa-check" style="color:var(--violet-600)"></i> Scoring triangulado: datos internos + DataCredito + IA explicable</li>
           <li><i class="fa-solid fa-check" style="color:var(--violet-600)"></i> Originacion digital pre-evaluada</li>
           <li><i class="fa-solid fa-check" style="color:var(--violet-600)"></i> Pagador identificado para descuento de libranza</li>
           <li><i class="fa-solid fa-check" style="color:var(--violet-600)"></i> Portafolio en tiempo real con data verificada</li>
@@ -557,53 +634,231 @@
   </div>
 </section>
 
-<!-- Scoring Interactive -->
+<!-- Scoring Triangulado con IA -->
 <section class="section section-gray" id="scoring">
   <div class="container">
-    <div class="scoring-grid">
-      <div class="fade-up">
-        <div class="section-label">Motor de scoring con IA</div>
-        <h2 class="section-title" style="font-size:clamp(28px,4vw,42px)">Tu historial laboral<br>es tu historial crediticio.</h2>
-        <p class="section-subtitle" style="margin-bottom:32px">
-          Millones de contratistas no existen en el sistema financiero tradicional. CobrAI construye un perfil crediticio a partir de datos laborales reales — no de un historial bancario que nunca tuvieron.
+    <!-- Intro -->
+    <div class="scoring-intro fade-up">
+      <div class="section-label">Scoring triangulado con IA</div>
+      <h2 class="section-title">No adivinamos el riesgo.<br><span class="gradient-text">Lo triangulamos.</span></h2>
+      <p class="section-subtitle">
+        CobrAI cruza datos laborales en tiempo real + historial crediticio de DataCredito + inteligencia artificial explicable. La fintech no asume riesgo a ciegas: cada decision esta respaldada por datos verificables.
+      </p>
+    </div>
+
+    <!-- 3 Capas -->
+    <div class="tri-architecture fade-up">
+      <!-- Capa 1 -->
+      <div class="tri-layer tri-layer-1">
+        <div class="tri-layer-header">
+          <div class="tri-layer-num">1</div>
+          <div class="tri-layer-title">Datos internos CobrAI</div>
+          <div class="tri-layer-badge">Comportamiento real</div>
+        </div>
+        <div class="tri-factors">
+          <div class="tri-factor"><i class="fa-solid fa-clock"></i> Antiguedad activa</div>
+          <div class="tri-factor"><i class="fa-solid fa-fire"></i> Frecuencia de turnos</div>
+          <div class="tri-factor"><i class="fa-solid fa-thumbs-up"></i> Tasa de aprobacion</div>
+          <div class="tri-factor"><i class="fa-solid fa-check-double"></i> Pagos puntuales</div>
+          <div class="tri-factor"><i class="fa-solid fa-folder-open"></i> Documentacion completa</div>
+          <div class="tri-factor"><i class="fa-solid fa-building"></i> Diversificacion</div>
+        </div>
+      </div>
+
+      <div class="tri-connector"><div class="tri-connector-line"></div></div>
+
+      <!-- Capa 2 -->
+      <div class="tri-layer tri-layer-2">
+        <div class="tri-layer-header">
+          <div class="tri-layer-num">2</div>
+          <div class="tri-layer-title">Bureau crediticio DataCredito</div>
+          <div class="tri-layer-badge">Historial financiero</div>
+        </div>
+        <div class="tri-factors">
+          <div class="tri-factor"><i class="fa-solid fa-chart-line"></i> Score DataCredito (150-950)</div>
+          <div class="tri-factor"><i class="fa-solid fa-file-invoice-dollar"></i> Obligaciones activas</div>
+          <div class="tri-factor"><i class="fa-solid fa-triangle-exclamation"></i> Mora actual</div>
+          <div class="tri-factor"><i class="fa-solid fa-fingerprint"></i> Huella crediticia</div>
+          <div class="tri-factor"><i class="fa-solid fa-arrow-trend-up"></i> Habito de pago</div>
+        </div>
+      </div>
+
+      <div class="tri-connector"><div class="tri-connector-line"></div></div>
+
+      <!-- Capa 3 -->
+      <div class="tri-layer tri-layer-3">
+        <div class="tri-layer-header">
+          <div class="tri-layer-num">3</div>
+          <div class="tri-layer-title">IA — Cruce inteligente</div>
+          <div class="tri-layer-badge">Explicabilidad + Decision</div>
+        </div>
+        <div class="tri-factors">
+          <div class="tri-factor"><i class="fa-solid fa-code-compare"></i> Validacion cruzada anti-fraude</div>
+          <div class="tri-factor"><i class="fa-solid fa-users-viewfinder"></i> Segmentacion por perfil</div>
+          <div class="tri-factor"><i class="fa-solid fa-file-lines"></i> Reporte en lenguaje natural</div>
+          <div class="tri-factor"><i class="fa-solid fa-satellite-dish"></i> Monitoreo continuo</div>
+          <div class="tri-factor"><i class="fa-solid fa-chart-pie"></i> Tasa de mora proyectada</div>
+          <div class="tri-factor"><i class="fa-solid fa-bell"></i> Alertas tempranas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perfiles de riesgo -->
+    <div class="profiles-section fade-up">
+      <div class="section-header">
+        <div class="section-label">Perfiles de riesgo</div>
+        <h2 class="section-title" style="font-size:clamp(24px,3.5vw,36px)">La IA no promedia.<br><span style="color:var(--slate-400)">Confronta y decide.</span></h2>
+        <p class="section-subtitle">Cada contratista es clasificado automaticamente. La fintech sabe exactamente que esperar.</p>
+      </div>
+      <div class="profiles-table-wrap">
+        <table class="profiles-table">
+          <thead>
+            <tr>
+              <th>Perfil</th>
+              <th>Score CobrAI</th>
+              <th>DataCredito</th>
+              <th>La IA determina</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="profile-name"><span class="profile-dot" style="background:var(--emerald-500)"></span> Estrella oculta</span></td>
+              <td>Alto (800+)</td>
+              <td>Sin huella</td>
+              <td>Trabajador estable sin historial formal — riesgo controlable</td>
+              <td><span class="profile-action" style="background:rgba(16,185,129,0.1); color:var(--emerald-600);">Credito conservador</span></td>
+            </tr>
+            <tr>
+              <td><span class="profile-name"><span class="profile-dot" style="background:var(--brand-500)"></span> Recuperado</span></td>
+              <td>Medio-alto (650+)</td>
+              <td>Bajo (mora antigua)</td>
+              <td>Mora historica pero comportamiento reciente positivo sostenido</td>
+              <td><span class="profile-action" style="background:rgba(79,70,229,0.1); color:var(--brand-600);">Credito gradual</span></td>
+            </tr>
+            <tr>
+              <td><span class="profile-name"><span class="profile-dot" style="background:#10B981"></span> Consistente</span></td>
+              <td>Alto (750+)</td>
+              <td>Alto (700+)</td>
+              <td>Doble validacion positiva — perfil premium verificado</td>
+              <td><span class="profile-action" style="background:rgba(16,185,129,0.1); color:var(--emerald-600);">Cupo alto + tasa preferencial</span></td>
+            </tr>
+            <tr>
+              <td><span class="profile-name"><span class="profile-dot" style="background:var(--rose-500)"></span> Alerta</span></td>
+              <td>Alto interno</td>
+              <td>Mora activa reciente</td>
+              <td>Inconsistencia detectada — requiere analisis manual</td>
+              <td><span class="profile-action" style="background:rgba(244,63,94,0.1); color:var(--rose-500);">Pausa automatica</span></td>
+            </tr>
+            <tr>
+              <td><span class="profile-name"><span class="profile-dot" style="background:var(--amber-500)"></span> Nuevo</span></td>
+              <td>Bajo (recien ingreso)</td>
+              <td>Cualquiera</td>
+              <td>Datos insuficientes — periodo de observacion</td>
+              <td><span class="profile-action" style="background:rgba(245,158,11,0.1); color:var(--amber-500);">Esperar 90 dias</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- XAI: Explicabilidad + Features -->
+    <div class="xai-section fade-up">
+      <div class="xai-report">
+        <div class="xai-report-header">
+          <i class="fa-solid fa-brain"></i>
+          <span>Reporte IA — Ejemplo real</span>
+        </div>
+        <div class="xai-report-name">Maria Lopez Gutierrez</div>
+        <div style="font-size:13px; color:var(--slate-400);">Contratista — Enfermera domiciliaria</div>
+        <div class="xai-report-score">782</div>
+        <p class="xai-report-text">
+          <strong>Factores positivos:</strong> 11 meses de antiguedad con 94% de turnos aprobados. Pagos recibidos sin retrasos en los ultimos 6 meses. Documentacion completa y verificada.
+          <br><br>
+          <strong>DataCredito:</strong> Sin huella crediticia activa — consistente con perfil de contratista independiente que nunca accedio a credito formal.
+          <br><br>
+          <strong>Decision IA:</strong> Perfil "Estrella oculta". Trabajadora estable con flujo de ingresos verificable. Riesgo de mora estimado: <strong style="color:#10B981">4.2%</strong>.
         </p>
-        <div class="scoring-factors">
-          <div class="scoring-factor">
-            <div class="factor-icon"><i class="fa-solid fa-clock"></i></div>
-            <div class="factor-info"><h5>Antiguedad</h5><p>Meses activo en la plataforma</p></div>
-            <div class="factor-pts">150 pts</div>
+        <div class="xai-report-metrics">
+          <div class="xai-metric">
+            <div class="xai-metric-label">Riesgo mora</div>
+            <div class="xai-metric-value good">4.2%</div>
           </div>
-          <div class="scoring-factor">
-            <div class="factor-icon"><i class="fa-solid fa-fire"></i></div>
-            <div class="factor-info"><h5>Actividad laboral</h5><p>Turnos realizados y frecuencia</p></div>
-            <div class="factor-pts">200 pts</div>
+          <div class="xai-metric">
+            <div class="xai-metric-label">Cupo sugerido</div>
+            <div class="xai-metric-value">$3.2M</div>
           </div>
-          <div class="scoring-factor">
-            <div class="factor-icon"><i class="fa-solid fa-thumbs-up"></i></div>
-            <div class="factor-info"><h5>Tasa de aprobacion</h5><p>% de turnos aprobados por empresa</p></div>
-            <div class="factor-pts">200 pts</div>
+          <div class="xai-metric">
+            <div class="xai-metric-label">Plazo max</div>
+            <div class="xai-metric-value">12 meses</div>
           </div>
-          <div class="scoring-factor">
-            <div class="factor-icon"><i class="fa-solid fa-check-double"></i></div>
-            <div class="factor-info"><h5>Pagos recibidos</h5><p>Cuentas cobradas puntualmente</p></div>
-            <div class="factor-pts">200 pts</div>
-          </div>
-          <div class="scoring-factor">
-            <div class="factor-icon"><i class="fa-solid fa-folder-open"></i></div>
-            <div class="factor-info"><h5>Documentacion</h5><p>Docs completos y verificados</p></div>
-            <div class="factor-pts">150 pts</div>
-          </div>
-          <div class="scoring-factor">
-            <div class="factor-icon"><i class="fa-solid fa-building"></i></div>
-            <div class="factor-info"><h5>Diversificacion</h5><p>Multiples empresas contratantes</p></div>
-            <div class="factor-pts">100 pts</div>
+          <div class="xai-metric">
+            <div class="xai-metric-label">Perfil</div>
+            <div class="xai-metric-value good">Estrella oculta</div>
           </div>
         </div>
       </div>
 
-      <div class="fade-up fade-up-delay-2">
+      <div class="xai-features">
+        <div class="xai-feature">
+          <div class="xai-feature-icon" style="background:rgba(16,185,129,0.1); color:var(--emerald-500);"><i class="fa-solid fa-code-compare"></i></div>
+          <div>
+            <h5>Validacion cruzada anti-fraude</h5>
+            <p>La IA confronta datos internos vs. bureau. Si alguien tiene muchos turnos pero mora activa, detecta la inconsistencia automaticamente.</p>
+          </div>
+        </div>
+        <div class="xai-feature">
+          <div class="xai-feature-icon" style="background:rgba(79,70,229,0.1); color:var(--brand-500);"><i class="fa-solid fa-file-lines"></i></div>
+          <div>
+            <h5>Explicabilidad (XAI)</h5>
+            <p>Cada decision genera un reporte en lenguaje natural. El banco puede auditar por que se aprobo o rechazo cada credito — no es caja negra.</p>
+          </div>
+        </div>
+        <div class="xai-feature">
+          <div class="xai-feature-icon" style="background:rgba(139,92,246,0.1); color:var(--violet-500);"><i class="fa-solid fa-satellite-dish"></i></div>
+          <div>
+            <h5>Monitoreo continuo en tiempo real</h5>
+            <p>El score no es una foto — es una pelicula. Si un contratista deja de trabajar, la IA baja el score antes de que entre en mora.</p>
+          </div>
+        </div>
+        <div class="xai-feature">
+          <div class="xai-feature-icon" style="background:rgba(244,63,94,0.1); color:var(--rose-500);"><i class="fa-solid fa-bell"></i></div>
+          <div>
+            <h5>Alertas tempranas a la fintech</h5>
+            <p>"15 contratistas con score decreciente en los ultimos 30 dias." La entidad puede actuar antes de que el riesgo se materialice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simulador interactivo -->
+    <div class="score-sim-grid fade-up" style="margin-top:80px">
+      <div class="score-sim-text">
+        <div class="section-label">Simulador</div>
+        <h3>Prueba el scoring<br>en tiempo real</h3>
+        <p>Ajusta el score y observa como cambia la elegibilidad, el nivel de riesgo y el cupo sugerido. Asi funciona la evaluacion automatica para cada contratista.</p>
+        <div class="score-sim-stats">
+          <div class="score-sim-stat">
+            <span class="mono">3.8%</span>
+            <span>Tasa de mora score &gt;700</span>
+          </div>
+          <div class="score-sim-stat">
+            <span class="mono">&lt;2%</span>
+            <span>Mora con repago por libranza</span>
+          </div>
+          <div class="score-sim-stat">
+            <span class="mono">5M+</span>
+            <span>Contratistas en Colombia</span>
+          </div>
+          <div class="score-sim-stat">
+            <span class="mono">85%</span>
+            <span>Sin acceso a credito formal</span>
+          </div>
+        </div>
+      </div>
+      <div>
         <div class="score-display">
-          <div class="score-label">Score CobrAI — Simulacion en vivo</div>
+          <div class="score-label">Score CobrAI Triangulado — Simulacion</div>
           <svg class="score-svg" viewBox="0 0 200 200">
             <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
             <circle id="scoreArc" cx="100" cy="100" r="85" fill="none" stroke="url(#scoreGrad)" stroke-width="14" stroke-linecap="round"
@@ -615,21 +870,24 @@
                 <stop offset="100%" stop-color="#EC4899"/>
               </linearGradient>
             </defs>
-            <text id="scoreNumber" x="100" y="95" text-anchor="middle" fill="white" font-size="52" font-weight="900" font-family="JetBrains Mono, monospace">720</text>
-            <text x="100" y="120" text-anchor="middle" fill="#94A3B8" font-size="14" font-weight="600" font-family="Inter">de 1000</text>
+            <text id="scoreNumber" x="100" y="90" text-anchor="middle" fill="white" font-size="48" font-weight="900" font-family="JetBrains Mono, monospace">720</text>
+            <text x="100" y="115" text-anchor="middle" fill="#94A3B8" font-size="12" font-weight="600" font-family="Inter">de 1000</text>
           </svg>
           <div class="score-details">
-            <div class="score-detail"><span class="label">Elegible credito</span><span class="value good" id="scoreEligible">Si ✓</span></div>
+            <div class="score-detail"><span class="label">Elegible credito</span><span class="value good" id="scoreEligible">Si</span></div>
             <div class="score-detail"><span class="label">Nivel de riesgo</span><span class="value" id="scoreRisk">Bajo</span></div>
             <div class="score-detail"><span class="label">Cupo sugerido</span><span class="value" id="scoreCupo">$2.500.000</span></div>
+            <div class="score-detail"><span class="label">Mora estimada</span><span class="value good" id="scoreMora">3.8%</span></div>
+            <div class="score-detail"><span class="label">Perfil IA</span><span class="value" id="scorePerfil" style="color:var(--brand-400)">Consistente</span></div>
           </div>
           <div class="score-slider-wrap">
-            <div class="score-slider-label">Ajusta el score para ver elegibilidad ↓</div>
+            <div class="score-slider-label">Ajusta el score para ver elegibilidad</div>
             <input type="range" id="scoreSlider" min="0" max="1000" value="720">
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -646,7 +904,7 @@
     <div class="ticker-wrap" style="border-radius:16px; margin-bottom:48px;">
       <div class="ticker">
         <span><i class="fa-solid fa-bolt"></i> Express.js + PostgreSQL</span>
-        <span><i class="fa-solid fa-bolt"></i> Scoring con Gemini AI</span>
+        <span><i class="fa-solid fa-bolt"></i> Scoring triangulado IA + DataCredito</span>
         <span><i class="fa-solid fa-bolt"></i> Firma electronica Ley 527</span>
         <span><i class="fa-solid fa-bolt"></i> Geolocalizacion en tiempo real</span>
         <span><i class="fa-solid fa-bolt"></i> PDF con Gotenberg</span>
@@ -655,7 +913,7 @@
         <span><i class="fa-solid fa-bolt"></i> API RESTful</span>
         <!-- Duplicate for seamless loop -->
         <span><i class="fa-solid fa-bolt"></i> Express.js + PostgreSQL</span>
-        <span><i class="fa-solid fa-bolt"></i> Scoring con Gemini AI</span>
+        <span><i class="fa-solid fa-bolt"></i> Scoring triangulado IA + DataCredito</span>
         <span><i class="fa-solid fa-bolt"></i> Firma electronica Ley 527</span>
         <span><i class="fa-solid fa-bolt"></i> Geolocalizacion en tiempo real</span>
         <span><i class="fa-solid fa-bolt"></i> PDF con Gotenberg</span>
@@ -721,6 +979,11 @@
           <i class="fa-solid fa-user-shield"></i>
           <h5>Ley 1581 / 2012</h5>
           <p>Proteccion de datos personales. Autorizacion explicita y habeas data.</p>
+        </div>
+        <div class="legal-badge">
+          <i class="fa-solid fa-database"></i>
+          <h5>Ley 1266 / 2008</h5>
+          <p>Habeas data financiero. Consulta a DataCredito con consentimiento explicito del contratista.</p>
         </div>
         <div class="legal-badge">
           <i class="fa-solid fa-building-columns"></i>
@@ -870,26 +1133,27 @@
   var statsEl = document.querySelector('.stats');
   if (statsEl) counterObserver.observe(statsEl);
 
-  // Interactive scoring slider
+  // Interactive scoring slider (triangulado)
   var slider = document.getElementById('scoreSlider');
   var scoreArc = document.getElementById('scoreArc');
   var scoreNumber = document.getElementById('scoreNumber');
   var scoreEligible = document.getElementById('scoreEligible');
   var scoreRisk = document.getElementById('scoreRisk');
   var scoreCupo = document.getElementById('scoreCupo');
+  var scoreMora = document.getElementById('scoreMora');
+  var scorePerfil = document.getElementById('scorePerfil');
 
   function updateScore(value) {
     var v = parseInt(value);
-    // Arc: 534 total, offset goes from 534 (0) to 0 (1000)
     var offset = 534 - (v / 1000) * 534;
     scoreArc.setAttribute('stroke-dashoffset', offset);
     scoreNumber.textContent = v;
 
     if (v >= 650) {
-      scoreEligible.textContent = 'Si ✓';
+      scoreEligible.textContent = 'Si';
       scoreEligible.style.color = '#10B981';
     } else {
-      scoreEligible.textContent = 'No ✗';
+      scoreEligible.textContent = 'No';
       scoreEligible.style.color = '#F43F5E';
     }
 
@@ -898,10 +1162,23 @@
     else if (v >= 450) { scoreRisk.textContent = 'Medio'; scoreRisk.style.color = '#F59E0B'; }
     else { scoreRisk.textContent = 'Alto'; scoreRisk.style.color = '#F43F5E'; }
 
-    if (v >= 800) scoreCupo.textContent = '$5.000.000';
-    else if (v >= 650) scoreCupo.textContent = '$2.500.000';
-    else if (v >= 450) scoreCupo.textContent = '$800.000';
-    else scoreCupo.textContent = '$0';
+    if (v >= 800) { scoreCupo.textContent = '$5.000.000'; }
+    else if (v >= 650) { scoreCupo.textContent = '$2.500.000'; }
+    else if (v >= 450) { scoreCupo.textContent = '$800.000'; }
+    else { scoreCupo.textContent = '$0'; }
+
+    // Mora estimada
+    if (v >= 800) { scoreMora.textContent = '2.1%'; scoreMora.style.color = '#10B981'; }
+    else if (v >= 650) { scoreMora.textContent = '3.8%'; scoreMora.style.color = '#10B981'; }
+    else if (v >= 450) { scoreMora.textContent = '12.5%'; scoreMora.style.color = '#F59E0B'; }
+    else { scoreMora.textContent = '28%+'; scoreMora.style.color = '#F43F5E'; }
+
+    // Perfil IA
+    if (v >= 800) { scorePerfil.textContent = 'Consistente'; scorePerfil.style.color = '#10B981'; }
+    else if (v >= 650) { scorePerfil.textContent = 'Estrella oculta'; scorePerfil.style.color = '#6366F1'; }
+    else if (v >= 450) { scorePerfil.textContent = 'En observacion'; scorePerfil.style.color = '#F59E0B'; }
+    else if (v >= 200) { scorePerfil.textContent = 'Nuevo'; scorePerfil.style.color = '#F59E0B'; }
+    else { scorePerfil.textContent = 'Sin datos'; scorePerfil.style.color = '#F43F5E'; }
   }
 
   if (slider) {
