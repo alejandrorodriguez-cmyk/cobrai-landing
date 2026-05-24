@@ -226,6 +226,15 @@
     .score-slider-label { font-size: 12px; color: var(--slate-400); margin-bottom: 8px; text-align: left; }
     input[type="range"] { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--rose-500), var(--amber-500), var(--emerald-500)); outline: none; }
     input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .score-sliders { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-top: 16px; }
+    .slider-row { display: flex; flex-direction: column; gap: 4px; }
+    .slider-label { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.7); }
+    .slider-val { color: #fff; font-weight: 700; font-size: 14px; }
+    .slider-max { color: rgba(255,255,255,0.4); font-size: 12px; margin-left: 2px; }
+    .score-sliders input[type="range"] { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.15); outline: none; }
+    .score-sliders input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--brand-500, #8B5CF6); cursor: pointer; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .score-profile-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 8px 20px; border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; transition: all 0.4s; }
+    .score-profile-badge .badge-dot { width: 8px; height: 8px; border-radius: 50%; }
 
     .score-sim-text h3 { font-size: 28px; font-weight: 900; margin-bottom: 16px; letter-spacing: -0.5px; }
     .score-sim-text p { font-size: 15px; color: var(--slate-500); line-height: 1.7; margin-bottom: 20px; }
@@ -979,9 +988,56 @@
             <div class="score-detail"><span class="label">Mora estimada</span><span class="value good" id="scoreMora">3.8%</span></div>
             <div class="score-detail"><span class="label">Perfil IA</span><span class="value" id="scorePerfil" style="color:var(--brand-400)">Consistente</span></div>
           </div>
+          <div class="score-profile-badge" id="scoreProfileBadge" style="background:rgba(99,102,241,0.15); color:#818CF8;">
+            <span class="badge-dot" style="background:#818CF8;"></span>
+            <span id="scoreProfileText">Consistente</span>
+          </div>
           <div class="score-slider-wrap">
-            <div class="score-slider-label">Ajusta el score para ver elegibilidad</div>
-            <input type="range" id="scoreSlider" min="0" max="1000" value="720">
+            <div class="score-slider-label">Ajusta los factores para ver elegibilidad</div>
+            <div class="score-sliders">
+              <div class="slider-row">
+                <div class="slider-label">
+                  <span>Antig&uuml;edad</span>
+                  <span><span class="slider-val" id="val-antiguedad">75</span><span class="slider-max">/150</span></span>
+                </div>
+                <input type="range" min="0" max="150" value="75" id="slider-antiguedad" oninput="updateSimScore()">
+              </div>
+              <div class="slider-row">
+                <div class="slider-label">
+                  <span>Actividad</span>
+                  <span><span class="slider-val" id="val-actividad">120</span><span class="slider-max">/200</span></span>
+                </div>
+                <input type="range" min="0" max="200" value="120" id="slider-actividad" oninput="updateSimScore()">
+              </div>
+              <div class="slider-row">
+                <div class="slider-label">
+                  <span>Cumplimiento</span>
+                  <span><span class="slider-val" id="val-cumplimiento">160</span><span class="slider-max">/200</span></span>
+                </div>
+                <input type="range" min="0" max="200" value="160" id="slider-cumplimiento" oninput="updateSimScore()">
+              </div>
+              <div class="slider-row">
+                <div class="slider-label">
+                  <span>Pagos</span>
+                  <span><span class="slider-val" id="val-pagos">100</span><span class="slider-max">/150</span></span>
+                </div>
+                <input type="range" min="0" max="150" value="100" id="slider-pagos" oninput="updateSimScore()">
+              </div>
+              <div class="slider-row">
+                <div class="slider-label">
+                  <span>Documentaci&oacute;n</span>
+                  <span><span class="slider-val" id="val-documentacion">140</span><span class="slider-max">/200</span></span>
+                </div>
+                <input type="range" min="0" max="200" value="140" id="slider-documentacion" oninput="updateSimScore()">
+              </div>
+              <div class="slider-row">
+                <div class="slider-label">
+                  <span>Perfil profesional</span>
+                  <span><span class="slider-val" id="val-perfil">60</span><span class="slider-max">/100</span></span>
+                </div>
+                <input type="range" min="0" max="100" value="60" id="slider-perfil" oninput="updateSimScore()">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1285,8 +1341,7 @@
   var statsEl = document.querySelector('.stats');
   if (statsEl) counterObserver.observe(statsEl);
 
-  // ========== SCORING SLIDER ==========
-  var slider = document.getElementById('scoreSlider');
+  // ========== SCORING SLIDER (6 factores) ==========
   var scoreArc = document.getElementById('scoreArc');
   var scoreNumber = document.getElementById('scoreNumber');
   var scoreEligible = document.getElementById('scoreEligible');
@@ -1294,40 +1349,88 @@
   var scoreCupo = document.getElementById('scoreCupo');
   var scoreMora = document.getElementById('scoreMora');
   var scorePerfil = document.getElementById('scorePerfil');
+  var scoreProfileBadge = document.getElementById('scoreProfileBadge');
+  var scoreProfileText = document.getElementById('scoreProfileText');
 
-  function updateScore(value) {
-    var v = parseInt(value);
-    var offset = 534 - (v / 1000) * 534;
+  var simSliders = [
+    { id: 'slider-antiguedad', valId: 'val-antiguedad' },
+    { id: 'slider-actividad', valId: 'val-actividad' },
+    { id: 'slider-cumplimiento', valId: 'val-cumplimiento' },
+    { id: 'slider-pagos', valId: 'val-pagos' },
+    { id: 'slider-documentacion', valId: 'val-documentacion' },
+    { id: 'slider-perfil', valId: 'val-perfil' }
+  ];
+
+  window.updateSimScore = function() {
+    var total = 0;
+    for (var i = 0; i < simSliders.length; i++) {
+      var sl = document.getElementById(simSliders[i].id);
+      var valEl = document.getElementById(simSliders[i].valId);
+      if (sl && valEl) {
+        var val = parseInt(sl.value);
+        valEl.textContent = val;
+        total += val;
+      }
+    }
+
+    var v = total; // 0..1000
+    var circumference = 2 * Math.PI * 85; // ~534.07
+    var offset = circumference * (1 - v / 1000);
     scoreArc.setAttribute('stroke-dashoffset', offset);
     scoreNumber.textContent = v;
 
+    // Gradient color on arc
+    var grad = document.getElementById('scoreGrad');
+    if (grad) {
+      var stops = grad.querySelectorAll('stop');
+      if (v >= 800) { stops[0].setAttribute('stop-color','#10B981'); stops[1].setAttribute('stop-color','#059669'); stops[2].setAttribute('stop-color','#10B981'); }
+      else if (v >= 650) { stops[0].setAttribute('stop-color','#6366F1'); stops[1].setAttribute('stop-color','#8B5CF6'); stops[2].setAttribute('stop-color','#EC4899'); }
+      else if (v >= 400) { stops[0].setAttribute('stop-color','#F59E0B'); stops[1].setAttribute('stop-color','#F59E0B'); stops[2].setAttribute('stop-color','#FBBF24'); }
+      else if (v >= 200) { stops[0].setAttribute('stop-color','#F43F5E'); stops[1].setAttribute('stop-color','#F43F5E'); stops[2].setAttribute('stop-color','#FB7185'); }
+      else { stops[0].setAttribute('stop-color','#94A3B8'); stops[1].setAttribute('stop-color','#94A3B8'); stops[2].setAttribute('stop-color','#CBD5E1'); }
+    }
+
+    // Eligible
     if (v >= 650) { scoreEligible.textContent = 'Sí'; scoreEligible.style.color = '#10B981'; }
     else { scoreEligible.textContent = 'No'; scoreEligible.style.color = '#F43F5E'; }
 
+    // Risk level
     if (v >= 800) { scoreRisk.textContent = 'Muy bajo'; scoreRisk.style.color = '#10B981'; }
     else if (v >= 650) { scoreRisk.textContent = 'Bajo'; scoreRisk.style.color = '#10B981'; }
-    else if (v >= 450) { scoreRisk.textContent = 'Medio'; scoreRisk.style.color = '#F59E0B'; }
+    else if (v >= 400) { scoreRisk.textContent = 'Medio'; scoreRisk.style.color = '#F59E0B'; }
     else { scoreRisk.textContent = 'Alto'; scoreRisk.style.color = '#F43F5E'; }
 
+    // Cupo
     if (v >= 800) scoreCupo.textContent = '$5.000.000';
     else if (v >= 650) scoreCupo.textContent = '$2.500.000';
-    else if (v >= 450) scoreCupo.textContent = '$800.000';
+    else if (v >= 400) scoreCupo.textContent = '$800.000';
     else scoreCupo.textContent = '$0';
 
+    // Mora
     if (v >= 800) { scoreMora.textContent = '2.1%'; scoreMora.style.color = '#10B981'; }
     else if (v >= 650) { scoreMora.textContent = '3.8%'; scoreMora.style.color = '#10B981'; }
-    else if (v >= 450) { scoreMora.textContent = '12.5%'; scoreMora.style.color = '#F59E0B'; }
+    else if (v >= 400) { scoreMora.textContent = '12.5%'; scoreMora.style.color = '#F59E0B'; }
     else { scoreMora.textContent = '28%+'; scoreMora.style.color = '#F43F5E'; }
 
-    if (v >= 800) { scorePerfil.textContent = 'Consistente'; scorePerfil.style.color = '#10B981'; }
-    else if (v >= 650) { scorePerfil.textContent = 'Estrella oculta'; scorePerfil.style.color = '#6366F1'; }
-    else if (v >= 450) { scorePerfil.textContent = 'En observación'; scorePerfil.style.color = '#F59E0B'; }
-    else if (v >= 200) { scorePerfil.textContent = 'Nuevo'; scorePerfil.style.color = '#F59E0B'; }
-    else { scorePerfil.textContent = 'Sin datos'; scorePerfil.style.color = '#F43F5E'; }
-  }
-  if (slider) {
-    slider.addEventListener('input', function() { updateScore(this.value); });
-    updateScore(720);
+    // Profile classification + badge
+    var profileName, profileColor, profileBg;
+    if (v >= 800) { profileName = 'Estrella oculta'; profileColor = '#10B981'; profileBg = 'rgba(16,185,129,0.15)'; }
+    else if (v >= 650) { profileName = 'Consistente'; profileColor = '#818CF8'; profileBg = 'rgba(99,102,241,0.15)'; }
+    else if (v >= 400) { profileName = 'Recuperado'; profileColor = '#F59E0B'; profileBg = 'rgba(245,158,11,0.15)'; }
+    else if (v >= 200) { profileName = 'Alerta'; profileColor = '#F43F5E'; profileBg = 'rgba(244,63,94,0.15)'; }
+    else { profileName = 'Nuevo'; profileColor = '#94A3B8'; profileBg = 'rgba(148,163,184,0.12)'; }
+
+    scorePerfil.textContent = profileName;
+    scorePerfil.style.color = profileColor;
+    scoreProfileText.textContent = profileName;
+    scoreProfileBadge.style.background = profileBg;
+    scoreProfileBadge.style.color = profileColor;
+    scoreProfileBadge.querySelector('.badge-dot').style.background = profileColor;
+  };
+
+  // Initialize
+  if (document.getElementById('slider-antiguedad')) {
+    updateSimScore();
   }
 
   // ========== SMOOTH SCROLL (closes mobile menu too) ==========
